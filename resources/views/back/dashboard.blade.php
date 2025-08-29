@@ -1,4 +1,3 @@
-use App\Http\Controllers\PaymentController;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,18 +231,11 @@ use App\Http\Controllers\PaymentController;
                         <i class="fas fa-user"></i>
                         <span>Profile</span>
                     </a>
-                    <a href="#" class="nav-item">
-                        <i class="fas fa-edit"></i>
-                        <span>Edit Profile</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
+                    
                 </nav>
                 
                 <div class="mt-auto pt-4 border-t border-primary-700">
-                    <a href="#" class="nav-item text-accent-300 hover:text-white">
+                    <a href="{{ route('logout') }}" class="nav-item text-accent-300 hover:text-white">
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
                     </a>
@@ -532,7 +524,7 @@ use App\Http\Controllers\PaymentController;
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => {
             item.addEventListener('click', function(e) {
-                e.preventDefault();
+                // e.preventDefault();
                 navItems.forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
                 

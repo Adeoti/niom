@@ -257,14 +257,7 @@
                         <i class="fas fa-user"></i>
                         <span>Profile</span>
                     </a>
-                    <a href="edit-profile.html" class="nav-item">
-                        <i class="fas fa-edit"></i>
-                        <span>Edit Profile</span>
-                    </a>
-                    <a href="settings.html" class="nav-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
+                   
                 </nav>
                 
                 <div class="mt-auto pt-4 border-t border-primary-700">

@@ -331,9 +331,17 @@
                     <li><a href="#home" class="text-dark-500 hover:text-primary-500 transition font-medium">Home</a></li>
                     <li><a href="#about" class="text-dark-500 hover:text-primary-500 transition font-medium">About</a></li>
                     <li><a href="#membership" class="text-dark-500 hover:text-primary-500 transition font-medium">Membership</a></li>
-                    <li><a href="{{route('membership.create')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Application</a></li>
+                    
                     <li><a href="#news" class="text-dark-500 hover:text-primary-500 transition font-medium">News</a></li>
                     <li><a href="#contact" class="text-dark-500 hover:text-primary-500 transition font-medium">Contact</a></li>
+                    @guest
+                        <li><a href="{{route('membership.create')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Application</a></li>
+                        <li><a href="{{route('login')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Login</a></li>
+                    @endguest
+                    @auth
+                        <li><a href="{{route('dashboard.index')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Dashboard</a></li>
+                        <li><a href="{{route('logout')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Logout</a></li>
+                    @endauth
                 </ul>
             </nav>
             
@@ -379,14 +387,25 @@
             <p class="text-xl mb-10 slide-up" style="animation-delay: 0.8s;"><i class="far fa-calendar-alt mr-2"></i> September 8-11, 2025</p>
             
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mt-8 slide-up" style="animation-delay: 1s;">
-                <a href="{{route('membership.create')}}" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
+                @guest 
+                    <a href="{{route('membership.create')}}" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
                     <span>Join Membership</span>
                     <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <a href="{{route('membership.create')}}" class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
-                    <span>Apply Now</span>
-                    <i class="fas fa-user-graduate ml-2"></i>
-                </a>
+                    </a>
+                    <a href="{{route('login')}}" class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
+                        <span>Login</span>
+                        <i class="fas fa-user-graduate ml-2"></i>
+                    </a>
+                @endguest
+
+                @auth
+                    <a href="{{route('dashboard.index')}}" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
+                        <span>My Dashboard</span>
+                        <i class="fas fa-tachometer-alt ml-2"></i>
+                    </a>
+                @endauth
+                
+
             </div>
         </div>
         
