@@ -3,13 +3,14 @@
 use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PaymentHistoryController;
-use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     $news = \App\Models\News::latest()->take(3)->get();
@@ -38,15 +39,26 @@ Route::get('/test', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/payment-history', [PaymentHistoryController::class, 'index'])->name('payment.history');
-    Route::get('/payment-history/{id}', [PaymentHistoryController::class, 'show'])->name('payment.history.show');
-    Route::get('/payment-history/download/{type}', [PaymentHistoryController::class, 'download'])->name('payment.history.download');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
+    // Route::get('/payment-history', [PaymentHistoryController::class, 'index'])->name('payment.history');
+    // Route::get('/payment-history/{id}', [PaymentHistoryController::class, 'show'])->name('payment.history.show');
+    // Route::get('/payment-history/download/{type}', [PaymentHistoryController::class, 'download'])->name('payment.history.download');
 
-    // Pending Payment Routes...
-    Route::get('/pending-payments', [PaymentController::class, 'pending'])->name('pending-payments');
-    Route::post('/payments/{payment}/process', [PaymentController::class, 'process'])->name('payments.process');
+
+    // Payment History Routes
+    Route::prefix('payment-history')->name('payment.history.')->group(function () {
+        Route::get('/', [PaymentHistoryController::class, 'index'])->name('index');
+        Route::get('/{id}', [PaymentHistoryController::class, 'show'])->name('show');
+        Route::get('/download/{type}', [PaymentHistoryController::class, 'download'])->name('download');
+    });
+
+    // Pending Payments Routes
+    Route::prefix('pending-payments')->name('pending.payments.')->group(function () {
+        Route::get('/', [PaymentController::class, 'pending'])->name('index');
+        Route::post('/process/{payment}', [PaymentController::class, 'process'])->name('process');
+    });
 
     // Event Routes....
     Route::get('/events', [EventController::class, 'index'])->name('events.index');
@@ -63,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/news', [\App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
@@ -78,7 +90,3 @@ Route::get('/checkout', [\App\Http\Controllers\MembershipController::class, 'che
 Route::get('/members', [MembershipController::class, 'index'])->name('membership.index');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 Route::get('application/form', [MembershipController::class, 'create'])->name('membership.create');
-
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
-});

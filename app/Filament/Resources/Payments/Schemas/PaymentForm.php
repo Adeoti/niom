@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Payments\Schemas;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Hidden;
@@ -51,6 +52,14 @@ class PaymentForm
                                 'affiliate' => 'Affiliates',
                             ])
                             ->default('all'),
+
+                        DatePicker::make('due_date')
+                            ->label('Due Date')
+                            ->required()
+                            ->placeholder('Select due date')
+                            ->format('Y-m-d')
+                            ->displayFormat('F j, Y')
+                            ->minDate(now()->addDay()),
                         ToggleButtons::make('is_active')
 
                             ->label('Status')

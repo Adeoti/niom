@@ -13,10 +13,12 @@ class Payment extends Model
         'is_active',
         'label',
         'payment_targets',
+        'due_date',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'due_date' => 'date',
     ];
 
     public function user()
