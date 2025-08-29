@@ -1,0 +1,198 @@
+/* ================================
+   CUSTOM FILAMENT DASHBOARD THEME
+   ================================ */
+
+/* ----------- GLOBAL RESET ----------- */
+body {
+    font-family: 'Inter', sans-serif; /* Replace with your brand font */
+    background-color: #f9fafb; /* Dashboard background */
+    color: #1f2937; /* Default text color */
+}
+
+/* ----------- SIDEBAR ----------- */
+.fi-sidebar {
+    /* width: 280px; */
+  background: linear-gradient(to bottom, #044223 0%, #087d42 100%);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+}
+.fi-sidebar-group-label {
+    color: #f8fafc;
+}
+
+.fi-sidebar-item-label{
+    color:#ffffff !important;
+}
+
+.fi-sidebar .fi-sidebar-item, .fi-sidebar .fi-sidebar-item a {
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    color:#fff !important;
+}
+
+
+
+.fi-sidebar-item.fi-active a{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-left: 4px solid #d2d925 !important;
+}
+.fi-sidebar-item.fi-active a:hover{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #d2d925 !important;
+}
+
+
+
+/* Sidebar collapse button */
+.fi-sidebar-header button {
+    background: transparent;
+    color: #f8fafc;
+}
+.fi-sidebar-header button:hover {
+    color: #93c5fd;
+}
+
+/* ----------- TOPBAR / HEADER ----------- */
+.fi-topbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    /* border-radius: 30px; */
+    /* margin: 20px 20px 0 20px; */
+}
+
+.fi-topbar .fi-topbar-item {
+    color: #374151;
+}
+.fi-topbar .fi-topbar-item:hover {
+    color: #2563eb;
+}
+
+/* ----------- CARDS ----------- */
+.fi-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
+}
+
+.fi-card:hover {
+    transform: translateY(-2px);
+}
+
+/* ----------- TABLES ----------- */
+.fi-ta-table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.fi-ta-table th {
+    background: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.fi-ta-table td {
+    background: #fff;
+    color: #374151;
+}
+
+/* Table row hover */
+.fi-ta-table tr:hover td {
+    background: #f9fafb;
+}
+
+/* ----------- BUTTONS ----------- */
+.fi-btn {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* Primary button */
+.fi-btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+}
+.fi-btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+
+
+/* Danger button */
+.fi-btn-danger {
+    background-color: #dc2626;
+    color: white;
+}
+.fi-btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+/* ----------- FORMS ----------- */
+.fi-fo-input,
+.fi-fo-select,
+.fi-fo-textarea {
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fi-fo-input:focus,
+.fi-fo-select:focus,
+.fi-fo-textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+/* Labels */
+.fi-fo-label {
+    font-weight: 600;
+    color: #374151;
+}
+
+/* ----------- NOTIFICATIONS ----------- */
+.fi-notification {
+    border-radius: 0.75rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.fi-notification-success {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    color: #065f46;
+}
+
+.fi-notification-danger {
+    background: #fef2f2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+}
+
+/* ----------- PAGINATION ----------- */
+.fi-pagination .fi-pagination-item {
+    border-radius: 0.5rem;
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.fi-pagination .fi-pagination-item-active {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ----------- MODALS ----------- */
+.fi-modal {
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
