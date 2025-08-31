@@ -12,18 +12,8 @@
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1"
     },
-    "repositories": [
-    {
-        "type": "path",
-        "url": "../filament-breeze",
-        "options": {
-            "symlink": true
-        }
-    }   
-    ],
 
     "require-dev": {
-        "adeoti/filament-breeze": "*",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
