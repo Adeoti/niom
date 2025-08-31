@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,7 +68,11 @@ class MembershipController extends Controller
         // For demonstration, we'll use a placeholder link
         $paymentLink = 'https://payment-gateway.example.com/pay?amount=100&reference=' . $membership->id;
 
-        return view('front.form.checkout', compact('membership', 'paymentLink'));
+
+        // Get the payment details
+        $payment = Payment::where('is_active', true)->where('type', 'application_fee')->first();
+
+        return view('front.form.checkout', compact('membership', 'paymentLink', 'payment'));
     }
     // public function index()
     // {

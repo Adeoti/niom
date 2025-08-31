@@ -3,52 +3,52 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\ChartWidget;
-use App\Models\Membership;
+use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class MemberRegistrationChart extends ChartWidget
+class MonthlyEventsTrendChart extends ChartWidget
 {
-    protected ?string $heading = 'Member Registration Chart';
+    protected ?string $heading = 'Monthly Events Trend';
 
     protected function getData(): array
     {
         $currentYear = now()->year;
         $driver = DB::getDriverName();
-
         if ($driver === 'sqlite') {
-            // SQLite uses strftime
-            $registrations = Membership::selectRaw("CAST(strftime('%m', application_date) AS INTEGER) as month, COUNT(*) as count")
-                ->whereRaw("strftime('%Y', application_date) = ?", [$currentYear])
+            $events = Event::selectRaw("CAST(strftime('%m', event_date) AS INTEGER) as month, COUNT(*) as count")
+                ->whereRaw("strftime('%Y', event_date || '') = ?", [$currentYear]) // force TEXT
                 ->groupBy('month')
                 ->orderBy('month')
                 ->pluck('count', 'month');
         } else {
-            // MySQL / MariaDB / Postgres
-            $registrations = Membership::selectRaw('MONTH(application_date) as month, COUNT(*) as count')
-                ->whereYear('application_date', $currentYear)
+            $events = Event::selectRaw('MONTH(event_date) as month, COUNT(*) as count')
+                ->whereYear('event_date', $currentYear)
                 ->groupBy('month')
                 ->orderBy('month')
                 ->pluck('count', 'month');
         }
 
-        // Prepare labels and data for all 12 months
+
+        // dd($events->toArray());
+
+
+        // Build labels and data for 12 months
         $labels = [];
         $data = [];
 
         for ($m = 1; $m <= 12; $m++) {
             $labels[] = Carbon::create()->month($m)->format('F');
-            $data[] = $registrations[$m] ?? 0;
+            $data[] = $events[$m] ?? 0;
         }
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Registrations',
+                    'label' => 'Events',
                     'data' => $data,
-                    'fill' => true,
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
-                    'borderColor' => 'rgb(75, 192, 192)',
+                    'backgroundColor' => 'rgba(54, 162, 235, 0.5)',
+                    'borderColor' => 'rgb(54, 162, 235)',
                 ],
             ],
             'labels' => $labels,
@@ -57,6 +57,6 @@ class MemberRegistrationChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'line';
+        return 'bar'; // change to 'line' if you prefer
     }
 }

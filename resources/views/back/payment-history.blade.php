@@ -230,6 +230,17 @@
             </button>
         </div>
     </div>
+     <!-- Footer -->
+    <footer class="bg-white shadow-md mt-8 py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-dark-500 text-sm font-medium">
+                Designed by 
+                <span class="text-primary-500 font-semibold">
+                    <a href="https://wa.link/1tz78w">Paramount Computer</a>
+                </span>
+            </p>
+        </div>
+    </footer>
 @endsection
 
 @push('styles')

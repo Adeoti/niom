@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Filament\Widgets\DashboardStatWidget;
 use App\Filament\Widgets\MemberRegistrationChart;
+use App\Filament\Widgets\MonthlyEventsTrendChart;
 use BackedEnum;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
@@ -23,6 +24,7 @@ class AdminCustomDashboard extends Page
             //
             DashboardStatWidget::class,
             MemberRegistrationChart::class,
+            MonthlyEventsTrendChart::class,
         ];
     }
 }

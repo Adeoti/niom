@@ -138,20 +138,20 @@
                                         <span class="font-semibold" id="summary-membership-type">Professional Membership</span>
                                     </div>
                                     
-                                    <div class="flex justify-between items-center mb-4">
+                                    {{-- <div class="flex justify-between items-center mb-4">
                                         <span class="text-dark-600">Application Fee:</span>
                                         <span class="font-semibold">₦ 2,000.00</span>
-                                    </div>
+                                    </div> --}}
                                     
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="text-dark-600">Membership Fee:</span>
-                                        <span class="font-semibold" id="summary-membership-fee">₦ 15,000.00</span>
+                                        <span class="font-semibold" id="summary-membership-feei">₦ {{number_format($payment->amount,2)}}</span>
                                     </div>
                                     
                                     <div class="border-t border-gray-200 pt-4 mt-2">
                                         <div class="flex justify-between items-center">
                                             <span class="text-lg font-semibold">Total:</span>
-                                            <span class="text-xl font-bold text-primary-500" id="summary-total">₦ 17,000.00</span>
+                                            <span class="text-xl font-bold text-primary-500" id="summary-totali">₦ {{number_format($payment->amount,2)}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -171,17 +171,18 @@
                             
                             <!-- Payment Form -->
                             <div>
-                                <h3 class="text-xl font-semibold text-primary-500 mb-6">Payment Details</h3>
-                                
-                                <form id="payment-form">
-                                    <div class="mb-6">
+                                <h3 class="text-xl font-semibold text-primary-500 mb-6">Proceed to pay</h3>
+
+                                <form id="payment-form" action="{{ route('payment.initialize', $payment) }}" method="POST">
+                                    @csrf
+                                    {{-- <div class="mb-6">
                                         <label class="block text-dark-700 font-medium mb-2">Card Number</label>
                                         <div class="card-element" id="card-number-element">
                                             <!-- Stripe Card Number Element will be inserted here -->
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
-                                    <div class="grid grid-cols-2 gap-4 mb-6">
+                                    {{-- <div class="grid grid-cols-2 gap-4 mb-6">
                                         <div>
                                             <label class="block text-dark-700 font-medium mb-2">Expiry Date</label>
                                             <div class="card-element" id="card-expiry-element">
@@ -194,12 +195,12 @@
                                                 <!-- Stripe CVC Element will be inserted here -->
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
-                                    <div class="mb-6">
+                                    {{-- <div class="mb-6">
                                         <label class="block text-dark-700 font-medium mb-2">Name on Card</label>
                                         <input type="text" class="form-input" placeholder="John Doe" id="cardholder-name">
-                                    </div>
+                                    </div> --}}
                                     
                                     <div id="card-errors" class="text-red-500 mb-6" role="alert"></div>
                                     

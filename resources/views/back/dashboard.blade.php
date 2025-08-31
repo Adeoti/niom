@@ -214,7 +214,7 @@
                 <h2 class="text-xl font-bold text-dark-800 mb-6">Quick Actions</h2>
                 
                 <div class="grid grid-cols-2 gap-4">
-                    <a href="#" class="flex flex-col items-center justify-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
+                    <a href="{{ route('events.index') }}" class="flex flex-col items-center justify-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition">
                         <div class="w-12 h-12 rounded-full bg-primary-500 text-white flex items-center justify-center mb-2">
                             <i class="fas fa-calendar-plus"></i>
                         </div>

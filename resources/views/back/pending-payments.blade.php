@@ -146,7 +146,7 @@
                 </div>
                 <div class="flex flex-col items-end">
                     <p class="text-2xl font-bold text-dark-800 mb-2">₦{{ number_format($payment->amount, 2) }}</p>
-                    <form action="{{ route('pending.payments.process', $payment) }}" method="POST">
+                    <form action="{{ route('payment.initialize', $payment) }}" method="POST">
                         @csrf
                         <input type="hidden" name="amount" value="{{ $payment->amount }}">
                         <input type="hidden" name="payment_method" value="online">
@@ -222,6 +222,17 @@
         </div>
     </div>
     @endif
+     <!-- Footer -->
+    <footer class="bg-white shadow-md mt-8 py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-dark-500 text-sm font-medium">
+                Designed by 
+                <span class="text-primary-500 font-semibold">
+                    <a href="https://wa.link/1tz78w">Paramount Computer</a>
+                </span>
+            </p>
+        </div>
+    </footer>
 @endsection
 
 @push('styles')

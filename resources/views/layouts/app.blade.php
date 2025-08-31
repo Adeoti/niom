@@ -183,11 +183,140 @@
                 display: block;
             }
         }
+
+
+        .toast {
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.toast.success {
+    background-color: #f0f9f4;
+    border-left: 4px solid #0a914c;
+    color: #0a914c;
+}
+
+.toast.error {
+    background-color: #fef2f2;
+    border-left: 4px solid #ef4444;
+    color: #dc2626;
+}
+
+.toast.warning {
+    background-color: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    color: #d97706;
+}
+
+.toast.info {
+    background-color: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    color: #2563eb;
+}
+
+.toast-icon {
+    margin-right: 12px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toast-content {
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+    margin-left: 8px;
+    color: inherit;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.toast-progress-bar {
+    height: 100%;
+    animation: progressBar 5s linear forwards;
+}
+
+.toast.success .toast-progress-bar {
+    background-color: #0a914c;
+}
+
+.toast.error .toast-progress-bar {
+    background-color: #ef4444;
+}
+
+.toast.warning .toast-progress-bar {
+    background-color: #f59e0b;
+}
+
+.toast.info .toast-progress-bar {
+    background-color: #3b82f6;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes progressBar {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.toast.hiding {
+    animation: slideOut 0.3s ease-in forwards;
+}
     </style>
     
     @stack('styles')
 </head>
 <body>
+     <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-3 w-80 max-w-full"></div>
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
         @include('partials.sidebar')
@@ -239,6 +368,116 @@
                 card.style.transform = 'translateY(0)';
             }, index * 100);
         });
+
+
+
+
+
+
+
+        // Toast notification system
+class ToastManager {
+    constructor() {
+        this.container = document.getElementById('toast-container');
+        this.toasts = new Map();
+        this.nextId = 1;
+    }
+
+    show(message, type = 'info', duration = 5000) {
+        const id = this.nextId++;
+        const toast = this.createToast(message, type, id);
+        
+        this.container.appendChild(toast);
+        this.toasts.set(id, toast);
+
+        // Auto remove after duration
+        if (duration > 0) {
+            setTimeout(() => {
+                this.remove(id);
+            }, duration);
+        }
+
+        return id;
+    }
+
+    createToast(message, type, id) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.setAttribute('role', 'alert');
+        
+        const icons = {
+            success: 'fas fa-check-circle',
+            error: 'fas fa-exclamation-circle',
+            warning: 'fas fa-exclamation-triangle',
+            info: 'fas fa-info-circle'
+        };
+
+        toast.innerHTML = `
+            <div class="toast-icon">
+                <i class="${icons[type]}"></i>
+            </div>
+            <div class="toast-content">${message}</div>
+            <button class="toast-close" onclick="toastManager.remove(${id})">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="toast-progress">
+                <div class="toast-progress-bar"></div>
+            </div>
+        `;
+
+        return toast;
+    }
+
+    remove(id) {
+        if (this.toasts.has(id)) {
+            const toast = this.toasts.get(id);
+            toast.classList.add('hiding');
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+                this.toasts.delete(id);
+            }, 300);
+        }
+    }
+
+    clearAll() {
+        this.toasts.forEach((toast, id) => {
+            this.remove(id);
+        });
+    }
+}
+
+// Initialize toast manager
+const toastManager = new ToastManager();
+
+// Display any flash messages from server
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for success message
+    @if(session('success'))
+        toastManager.show("{{ session('success') }}", 'success');
+    @endif
+
+    // Check for error message
+    @if(session('error'))
+        toastManager.show("{{ session('error') }}", 'error');
+    @endif
+
+    // Check for warning message
+    @if(session('warning'))
+        toastManager.show("{{ session('warning') }}", 'warning');
+    @endif
+
+    // Check for info message
+    @if(session('info'))
+        toastManager.show("{{ session('info') }}", 'info');
+    @endif
+});
+
+// Make toastManager available globally for other scripts
+window.toastManager = toastManager;
     </script>
     
     @stack('scripts')

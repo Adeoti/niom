@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PaymentHistoryController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 Route::get('/', function () {
     $news = \App\Models\News::latest()->take(3)->get();
@@ -38,6 +39,10 @@ Route::get('/test', function () {
     abort(500);
 });
 
+Route::post('/paystack/webhook', [PaymentController::class, 'handleWebhook'])
+    ->name('payment.webhook')
+    ->withoutMiddleware([VerifyCsrfToken::class]);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -54,23 +59,38 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/download/{type}', [PaymentHistoryController::class, 'download'])->name('download');
     });
 
+    // Profile Routes
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'show'])->name('show');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
+        Route::put('/update', [ProfileController::class, 'update'])->name('update');
+        Route::post('/update/avatar', [ProfileController::class, 'updateAvatar'])->name('update.avatar');
+        Route::post('/update/password', [ProfileController::class, 'updatePassword'])->name('update.password');
+    });
+
+    // Events Routes
+    Route::prefix('events')->name('events.')->group(function () {
+        Route::get('/', [EventController::class, 'index'])->name('index');
+        Route::get('/{event}', [EventController::class, 'show'])->name('show');
+        Route::post('/register/{event}', [EventController::class, 'register'])->name('register');
+    });
+
     // Pending Payments Routes
     Route::prefix('pending-payments')->name('pending.payments.')->group(function () {
         Route::get('/', [PaymentController::class, 'pending'])->name('index');
         Route::post('/process/{payment}', [PaymentController::class, 'process'])->name('process');
     });
 
+    Route::post('/payment/initialize/{payment}', [PaymentController::class, 'initializePayment'])->name('payment.initialize');
+    Route::get('/payment/callback', [PaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
+
+
+
     // Event Routes....
     Route::get('/events', [EventController::class, 'index'])->name('events.index');
     Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
     Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
 
-
-    // Profile Routes....
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
 
 
 

@@ -29,10 +29,13 @@ class EventForm
                             ->required(),
 
                         DateTimePicker::make('event_date')
+                            ->minDate(now()->addDay())
                             ->required(),
                         Textarea::make('event_description')
                             ->default(null)
                             ->columnSpanFull(),
+                        TextInput::make('location')
+                            ->required(),
                         ToggleButtons::make('is_active')
                             ->label('Active Status')
                             ->inline()

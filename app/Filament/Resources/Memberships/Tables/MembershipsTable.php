@@ -11,6 +11,9 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
+use App\Mail\MembershipApproved;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
@@ -92,7 +95,19 @@ class MembershipsTable
                                 'status' => 'approved',
                                 'approval_date' => now()
                             ]);
-                            // Send mail to the user...
+
+                            // Send approval email to the user
+                            try {
+                                // Get the user associated with this membership
+                                $user = $record->user;
+
+                                if ($user && $user->email) {
+                                    Mail::to($user->email)->send(new MembershipApproved($record));
+                                }
+                            } catch (\Exception $e) {
+                                // Log error if email fails but don't break the approval process
+                                Log::error('Failed to send approval email: ' . $e->getMessage());
+                            }
                         }),
                 ])
             ])

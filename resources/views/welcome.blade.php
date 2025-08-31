@@ -339,7 +339,7 @@
                         <li><a href="{{route('login')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Login</a></li>
                     @endguest
                     @auth
-                        <li><a href="{{route('dashboard.index')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Dashboard</a></li>
+                        <li><a href="{{route('dashboard')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Dashboard</a></li>
                         <li><a href="{{route('logout')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Logout</a></li>
                     @endauth
                 </ul>
@@ -399,7 +399,7 @@
                 @endguest
 
                 @auth
-                    <a href="{{route('dashboard.index')}}" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
+                    <a href="{{route('dashboard')}}" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto sm:mx-0">
                         <span>My Dashboard</span>
                         <i class="fas fa-tachometer-alt ml-2"></i>
                     </a>

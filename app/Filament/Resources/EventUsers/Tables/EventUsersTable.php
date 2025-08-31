@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Events\Tables;
+namespace App\Filament\Resources\EventUsers\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,23 +10,25 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class EventsTable
+class EventUsersTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
+                TextColumn::make('event.event_name')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('user.name')
-                    ->label('Created By')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('event_name')
-                    ->searchable(),
-                TextColumn::make('event_date')
-                    ->dateTime()
-                    ->sortable(),
-                IconColumn::make('is_active')
-                    ->label('Active Status')
-                    ->boolean(),
+                TextColumn::make('is_active')
+                    ->badge()
+                    ->colors([
+                        0 => 'danger',
+                        1 => 'success',
+                    ])
+                    ->state(fn($record) => $record->is_active ? 'registered' : 'inactive'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

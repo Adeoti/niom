@@ -53,7 +53,7 @@ class PaymentHistoryController extends Controller
             ->where('membership_id', $membership->id)
             ->findOrFail($id);
 
-        return view('payment-details', compact('payment'));
+        return view('back.payment-details', compact('payment', 'membership'));
     }
 
     public function download($type)

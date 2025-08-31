@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -15,7 +18,9 @@ class ProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('back.profile', compact('user'));
+        $membership = $user->membership;
+        
+        return view('back.profile', compact('user', 'membership'));
     }
 
     /**
@@ -24,7 +29,9 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        return view('profile.edit', compact('user'));
+        $membership = $user->membership;
+        
+        return view('profile.edit', compact('user', 'membership'));
     }
 
     /**
@@ -33,23 +40,80 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
+        $membership = $user->membership;
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
             'phone' => 'nullable|string|max:20',
             'date_of_birth' => 'nullable|date',
             'gender' => 'nullable|in:male,female,other',
             'address' => 'nullable|string|max:500',
             'city' => 'nullable|string|max:255',
             'state' => 'nullable|string|max:255',
+            'title' => 'nullable|string|max:255',
+            'institution' => 'nullable|string|max:255',
+            'qualification' => 'nullable|string|max:255',
+            'biography' => 'nullable|string',
         ]);
 
-        $user->update($validated);
+        // Update user information
+        $user->update([
+            'name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'email' => $validated['email'],
+        ]);
+
+        // Update membership information
+        if ($membership) {
+            $membership->update([
+                'title' => $validated['title'] ?? $membership->title,
+                'first_name' => $validated['first_name'],
+                'surname' => $validated['last_name'],
+                'phone' => $validated['phone'] ?? $membership->phone,
+                'date_of_birth' => $validated['date_of_birth'] ?? $membership->date_of_birth,
+                'address' => $validated['address'] ?? $membership->address,
+                'city' => $validated['city'] ?? $membership->city,
+                'state' => $validated['state'] ?? $membership->state,
+                'institution' => $validated['institution'] ?? $membership->institution,
+                'qualification' => $validated['qualification'] ?? $membership->qualification,
+                'biography' => $validated['biography'] ?? $membership->biography,
+            ]);
+        }
 
         return redirect()->route('profile.show')
             ->with('success', 'Profile updated successfully!');
+    }
+
+    /**
+     * Update the user's password
+     */
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Check if current password matches
+        if (!Hash::check($validated['current_password'], $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
+
+        // Update password
+        $user->update([
+            'password' => Hash::make($validated['new_password']),
+        ]);
+
+        return redirect()->back()->with('success', 'Password updated successfully!');
     }
 
     /**
@@ -62,19 +126,24 @@ class ProfileController extends Controller
         ]);
 
         $user = Auth::user();
+        $membership = $user->membership;
 
         // Delete old avatar if exists
-        if ($user->avatar) {
-            Storage::delete('public/avatars/' . $user->avatar);
+        if ($membership && $membership->passport_path) {
+            Storage::delete($membership->passport_path);
         }
 
         // Store new avatar
-        $avatarName = $user->id . '_avatar.' . $request->avatar->extension();
-        $request->avatar->storeAs('public/avatars', $avatarName);
+        $avatarPath = $request->file('avatar')->store('avatars', 'public');
 
-        $user->update(['avatar' => $avatarName]);
+        // Update membership with new avatar path
+        if ($membership) {
+            $membership->update([
+                'passport_path' => $avatarPath,
+            ]);
+        }
 
         return redirect()->back()
-            ->with('success', 'Avatar updated successfully!');
+            ->with('success', 'Profile picture updated successfully!');
     }
 }

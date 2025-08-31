@@ -13,9 +13,20 @@ class Event extends Model
         'event_description',
         'event_date',
         'is_active',
+        'location',
     ];
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
+            ->withTimestamps()
+            ->withPivot('is_active');
+    }
+    protected $casts = [
+        'event_date' => 'datetime',
+        'is_active' => 'boolean',
+    ];
 }

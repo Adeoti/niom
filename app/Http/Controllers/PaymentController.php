@@ -3,128 +3,232 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Membership;
+use Illuminate\Http\Request;
 use App\Models\PaymentHistory;
+use App\Services\PaymentService;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 class PaymentController extends Controller
 {
+    protected $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     /**
      * Display pending payments for the authenticated user
      */
     public function pending()
     {
         $user = Auth::user();
-        $membership = Membership::where('user_id', $user->id)->first();
+        $membership = $user->membership;
 
         if (!$membership) {
             return redirect()->route('dashboard')->with('error', 'You need a membership to view pending payments.');
         }
 
-        // Get all active payments
-        // Where payment_targets = either
-        $activePayments = Payment::where('is_active', true)
-            ->where('payment_targets', 'all')
-            ->orWhere('type', '!=', 'application_fee')
-            ->get();
+        $result = $this->paymentService->getPendingPayments($membership);
 
-        // Filter payments that user hasn't paid yet
-        $pendingPayments = [];
-        $totalDue = 0;
-        $overdueCount = 0;
-        $dueSoonCount = 0;
-
-        foreach ($activePayments as $payment) {
-            $hasPaid = PaymentHistory::where('payment_id', $payment->id)
-                ->where('membership_id', $membership->id)
-                ->where('status', 'completed')
-                ->exists();
-
-            if (!$hasPaid) {
-                // Calculate due status
-                $dueStatus = $this->getDueStatus($payment);
-
-                $pendingPayments[] = [
-                    'payment' => $payment,
-                    'due_status' => $dueStatus,
-                ];
-
-                $totalDue += $payment->amount;
-
-                if ($dueStatus === 'overdue') {
-                    $overdueCount++;
-                } elseif ($dueStatus === 'due_soon') {
-                    $dueSoonCount++;
-                }
-            }
-        }
-
-        $stats = [
-            'pending_count' => count($pendingPayments),
-            'total_due' => $totalDue,
-            'overdue_count' => $overdueCount,
-            'due_soon_count' => $dueSoonCount,
-        ];
-
-        return view('back.pending-payments', compact('pendingPayments', 'stats', 'membership'));
-    }
-
-    /**
-     * Determine the due status of a payment
-     */
-
-    private function getDueStatus($payment)
-    {
-        $due_date = $payment->due_date; // Assuming 'due_date' is a date field in payments table
-
-        if ($due_date) {
-            $now = now();
-            if ($due_date < $now) {
-                return 'overdue';
-            } elseif ($due_date->diffInDays($now) <= 7) {
-                return 'due_soon';
-            }
-        }
-
-        return 'pending';
-    }
-
-    /**
-     * Process a payment
-     */
-    public function process(Request $request, Payment $payment)
-    {
-        // Validate the request
-        $validated = $request->validate([
-            'payment_method' => 'required|string',
-            'amount' => 'required|numeric',
+        return view('back.pending-payments', [
+            'pendingPayments' => $result['pending_payments'],
+            'stats' => $result['stats'],
+            'membership' => $membership
         ]);
+    }
 
-        $membership = Auth::user()->membership;
+    /**
+     * Initialize Paystack payment
+     */
+    public function initializePayment(Request $request, Payment $payment)
+    {
+        $user = Auth::user();
+        $membership = $user->membership;
 
         if (!$membership) {
             return redirect()->back()->with('error', 'You need a membership to make payments.');
         }
 
-        // Process the payment (integration with payment gateway would go here)
-        // For now, we'll simulate a successful payment
-
-        // Create payment history record
-        PaymentHistory::create([
-            'membership_id' => $membership->id,
-            'payment_id' => $payment->id,
-            'amount' => $validated['amount'],
-            'payment_method' => $validated['payment_method'],
-            'status' => 'completed',
-            'api_response' => json_encode([
-                'reference' => 'PAY-' . uniqid(),
-                'status' => 'success',
-                'message' => 'Payment processed successfully'
-            ]),
+        // Validate amount
+        $request->validate([
+            'amount' => 'required|numeric|min:100', // Minimum amount
         ]);
 
+        // 
+        // Get the amount from payment instead
+        $amount = $payment->amount;
+
+        // Initialize payment
+        $result = $this->paymentService->initializePayment($payment, $membership, $amount, $user->email);
+
+        if (!$result['success']) {
+            return redirect()->back()->with('error', $result['message']);
+        }
+
+        // Store transaction reference temporarily
+        session([
+            'paystack_transaction_ref' => $result['reference'],
+            'paystack_payment_id' => $payment->id,
+            'paystack_amount' => $amount
+        ]);
+
+        // Redirect to Paystack payment page
+        return redirect($result['authorization_url']);
+    }
+
+    /**
+     * Handle Paystack payment callback
+     */
+    public function handlePaymentCallback(Request $request)
+    {
+        $reference = $request->reference;
+
+        if (!$reference) {
+            // Try to get reference from session if not in URL
+            $reference = session('paystack_transaction_ref');
+
+            if (!$reference) {
+                return redirect()->route('payment.history.index')->with('error', 'Invalid payment reference.');
+            }
+        }
+
+        // Verify transaction
+        $verification = $this->paymentService->verifyPayment($reference);
+
+        if (!$verification['success']) {
+            return redirect()->route('payment.pending')->with('error', $verification['message']);
+        }
+
+        // Check if transaction was successful
+        if ($verification['data']['status'] !== 'success') {
+            return redirect()->route('payment.pending')
+                ->with('error', 'Payment failed or was not completed.');
+        }
+
+        // Verify the amount matches
+        $expectedAmount = session('paystack_amount') * 100; // Convert to kobo
+        $actualAmount = $verification['data']['amount'];
+
+        if ($expectedAmount != $actualAmount) {
+            Log::error("Payment amount mismatch: Expected {$expectedAmount}, Got {$actualAmount}");
+            return redirect()->route('payment.pending')
+                ->with('error', 'Payment verification failed. Amount mismatch.');
+        }
+
+        // Get stored session data
+        $paymentId = session('paystack_payment_id');
+        $amount = session('paystack_amount');
+
+        // Get payment and membership details
+        $payment = Payment::find($paymentId);
+        $user = Auth::user();
+        $membership = $user->membership;
+
+        // Record payment
+        $paymentRecord = $this->paymentService->recordPayment(
+            $paymentId,
+            $membership->id,
+            $amount,
+            $reference,
+            'paystack',
+            $verification['data']
+        );
+
+        if (!$paymentRecord) {
+            return redirect()->route('payment.pending')
+                ->with('error', 'Payment recorded but failed to save details. Please contact support.');
+        }
+
+        // Send confirmation email
+        $this->paymentService->sendConfirmationEmail($payment, $membership, $amount, $user->email);
+
+        // Clear session data
+        $request->session()->forget(['paystack_transaction_ref', 'paystack_payment_id', 'paystack_amount']);
+
         return redirect()->route('payment.history.index')
-            ->with('success', 'Payment processed successfully!');
+            ->with('success', 'Payment processed successfully! A confirmation email has been sent.');
+    }
+
+    /**
+     * Display payment history
+     */
+    public function paymentHistory()
+    {
+        $user = Auth::user();
+        $membership = $user->membership;
+
+        if (!$membership) {
+            return redirect()->route('dashboard')->with('error', 'You need a membership to view payment history.');
+        }
+
+        $paymentHistory = $this->paymentService->getPaymentHistory($membership->id);
+
+        return view('back.payment-history', compact('paymentHistory'));
+    }
+
+    /**
+     * Webhook handler for Paystack (recommended)
+     */
+    public function handleWebhook(Request $request)
+    {
+        // Verify this is a legitimate Paystack webhook
+        $input = $request->getContent();
+        $secret = config('services.paystack.secret_key');
+
+        // Validate webhook signature
+        if ($request->header('x-paystack-signature') !== hash_hmac('sha512', $input, $secret)) {
+            Log::error('Invalid webhook signature');
+            return response()->json(['error' => 'Invalid signature'], 403);
+        }
+
+        $event = json_decode($input);
+
+        if ($event->event === 'charge.success') {
+            $reference = $event->data->reference;
+
+            // Verify the transaction
+            $verification = $this->paymentService->verifyPayment($reference);
+
+            if ($verification['success'] && $verification['data']['status'] === 'success') {
+                // Find or create payment record
+                $paymentData = $verification['data'];
+                $metadata = $paymentData['metadata'];
+
+                $paymentHistory = PaymentHistory::firstOrNew([
+                    'transaction_reference' => $reference
+                ]);
+
+                if (!$paymentHistory->exists) {
+                    $paymentHistory->fill([
+                        'membership_id' => $metadata['membership_id'] ?? null,
+                        'payment_id' => $metadata['payment_id'] ?? null,
+                        'amount' => $paymentData['amount'] / 100, // Convert from kobo
+                        'payment_method' => $paymentData['channel'],
+                        'status' => 'completed',
+                        'api_response' => json_encode($paymentData),
+                    ])->save();
+
+                    // Send confirmation email if needed
+                    if (isset($metadata['membership_id'])) {
+                        $membership = Membership::find($metadata['membership_id']);
+                        if ($membership && $membership->user) {
+                            $payment = Payment::find($metadata['payment_id'] ?? null);
+                            $this->paymentService->sendConfirmationEmail(
+                                $payment,
+                                $membership,
+                                $paymentData['amount'] / 100,
+                                $membership->user->email
+                            );
+                        }
+                    }
+                }
+            }
+        }
+
+        return response()->json(['status' => 'success']);
     }
 }

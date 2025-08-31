@@ -67,6 +67,18 @@ class User extends Authenticatable
         return $this->hasMany(Discussion::class);
     }
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class)
+            ->withTimestamps()
+            ->withPivot('is_active');
+    }
+
+    public function membership()
+    {
+        return $this->hasOne(Membership::class);
+    }
+
     public function replies()
     {
         return $this->hasMany(Reply::class);

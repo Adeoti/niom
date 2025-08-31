@@ -34,14 +34,15 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->globalSearch(false)
             ->colors([
                 'primary' => Color::Green,
             ])
             ->brandName('NIOTIM Admin')
-            ->assets([
-                Css::make('custom-stylesheet', resource_path('css/custom.css')),
-                Js::make('custom-script', resource_path('js/custom.js')),
-            ])
+            // ->assets([
+            //     Css::make('custom-stylesheet', resource_path('css/custom.css')),
+            //     Js::make('custom-script', resource_path('js/custom.js')),
+            // ])
             ->simplePageMaxContentWidth(Width::Small)
             ->sidebarCollapsibleOnDesktop(true)
             ->subNavigationPosition(SubNavigationPosition::End)

@@ -45,11 +45,11 @@ class PaymentForm
                             ->options([
                                 'all' => 'All Members',
                                 'new_members' => 'New Members',
-                                'students' => 'Students',
-                                'corporate' => 'Corporate Members',
-                                'fellow' => 'Fellows',
-                                'associate' => 'Associates',
-                                'affiliate' => 'Affiliates',
+                                // 'students' => 'Students',
+                                // 'corporate' => 'Corporate Members',
+                                // 'fellow' => 'Fellows',
+                                // 'associate' => 'Associates',
+                                // 'affiliate' => 'Affiliates',
                             ])
                             ->default('all'),
 
