@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,10 @@ Route::get('/', function () {
     $news = \App\Models\News::latest()->take(3)->get();
     $members = Membership::where('featured_on_homepage', true)->where('status', 'approved')->latest()->take(3)->get();
 
-    return view('welcome', compact('news', 'members'));
+
+    $latestEvent = Event::where('is_active', true)->latest()->first();
+
+    return view('welcome', compact('news', 'members', 'latestEvent'));
 })->name('home');
 
 
