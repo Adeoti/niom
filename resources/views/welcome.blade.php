@@ -384,7 +384,7 @@
             <p class="text-xl md:text-2xl mb-2 slide-up" style="animation-delay: 0.2s;">Office Technology and Information Management</p>
             <p class="text-lg md:text-xl mb-2 slide-up" style="animation-delay: 0.4s;">for Sustainable Development in Digital Economy</p>
             <div class="w-24 h-1 bg-secondary-500 mx-auto my-8 slide-up" style="animation-delay: 0.6s;"></div>
-            <p class="text-xl mb-10 slide-up" style="animation-delay: 0.8s;"><i class="far fa-calendar-alt mr-2"></i> {{ $latestEvent->event_date->format('F j, Y') }}</p>
+            <p class="text-xl mb-10 slide-up" style="animation-delay: 0.8s;"><i class="far fa-calendar-alt mr-2"></i> {{ $latestEvent?->event_date->format('F j, Y') }}</p>
 
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mt-8 slide-up" style="animation-delay: 1s;">
                 @guest
