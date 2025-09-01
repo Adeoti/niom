@@ -145,13 +145,13 @@
                                     
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="text-dark-600">Membership Fee:</span>
-                                        <span class="font-semibold" id="summary-membership-feei">₦ {{number_format($payment->amount,2)}}</span>
+                                        <span class="font-semibold" id="summary-membership-feei">₦ {{number_format($payment?->amount,2)}}</span>
                                     </div>
                                     
                                     <div class="border-t border-gray-200 pt-4 mt-2">
                                         <div class="flex justify-between items-center">
                                             <span class="text-lg font-semibold">Total:</span>
-                                            <span class="text-xl font-bold text-primary-500" id="summary-totali">₦ {{number_format($payment->amount,2)}}</span>
+                                            <span class="text-xl font-bold text-primary-500" id="summary-totali">₦ {{number_format($payment?->amount,2)}}</span>
                                         </div>
                                     </div>
                                 </div>
