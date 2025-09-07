@@ -217,7 +217,7 @@
         <div class="auth-card">
             <div class="auth-header">
                 <div class="w-16 h-16 rounded-full bg-white text-primary-500 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                    <center><img src="{{ asset('images/niotim-logo.jpeg') }}" alt=""></center>
+                    <center><img src="{{ asset('images/niotim-logo.jpeg') }}" style="height:70px;" alt=""></center>
                 </div>
                 <h1 class="text-2xl font-bold">Welcome to NIOTIM</h1>
                 <p class="text-accent-300">Sign in to your account</p>
