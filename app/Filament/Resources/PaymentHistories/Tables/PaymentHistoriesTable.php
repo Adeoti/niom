@@ -26,6 +26,9 @@ class PaymentHistoriesTable
                     ->sortable(),
                 TextColumn::make('payment_method')
                     ->searchable(),
+                TextColumn::make('transaction_reference')
+                    ->label("Transaction Ref")
+                    ->searchable(),
                 TextColumn::make('status')
                     ->searchable(),
                 TextColumn::make('created_at')
