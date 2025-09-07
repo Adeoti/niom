@@ -34,6 +34,8 @@ class PaymentController extends Controller
 
         $result = $this->paymentService->getPendingPayments($membership);
 
+        // dd($result['pending_payments']);
+
         return view('back.pending-payments', [
             'pendingPayments' => $result['pending_payments'],
             'stats' => $result['stats'],

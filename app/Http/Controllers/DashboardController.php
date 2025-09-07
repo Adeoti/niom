@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Event;
-use App\Models\Membership;
-use App\Models\Payment;
-use App\Models\PaymentHistory;
 use Carbon\Carbon;
+use App\Models\Event;
+use App\Models\Payment;
+use App\Models\Membership;
+use Illuminate\Http\Request;
+use App\Models\PaymentHistory;
+use App\Services\PaymentService;
+use Illuminate\Support\Facades\Auth;
 
 
 class DashboardController extends Controller
@@ -63,8 +64,13 @@ class DashboardController extends Controller
         }
 
 
+        $pendingData = app(PaymentService::class)->getPendingPayments($membership);
+
+        $pendingPayments = $pendingData['pending_payments'];
+        $pendingAmount = $pendingData['stats']['total_due'];
 
 
+        // dd($pendingPayments, $pendingAmount);
 
         return view('back.dashboard', compact(
             'membership',

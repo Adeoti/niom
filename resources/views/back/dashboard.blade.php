@@ -137,19 +137,13 @@
                 </div>
                 
                 <div class="space-y-4">
-                    @forelse($pendingPayments as $payment)
-                    {{-- <div class="payment-item">
-                        <div>
-                            <h3 class="font-semibold">{{ $payment->label }}</h3>
-                            <p class="text-dark-500 text-sm">Type: {{ ucfirst($payment->type) }}</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="font-bold text-red-500">₦{{ number_format($payment->amount, 2) }}</p>
-                            <button class="btn-primary text-white text-xs px-3 py-1 rounded-full mt-2">Pay Now</button>
-                        </div>
-                    </div> --}}
+                    @forelse($pendingPayments as $item)
+                    @php
+                        $payment = $item['payment'];
+                        $dueStatus = $item['due_status'];
+                    @endphp
 
-                    <div class="payment-card">
+                    <div class="payment-card mb-4 p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="flex-1">
                     <div class="flex items-center justify-between mb-2">

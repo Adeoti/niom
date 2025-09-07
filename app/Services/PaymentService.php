@@ -152,7 +152,7 @@ class PaymentService
 
 
         // Add transaction fee to total due
-        $totalDue += $transaction_fee;
+        // $totalDue += $transaction_fee;
 
 
         foreach ($activePayments as $payment) {
