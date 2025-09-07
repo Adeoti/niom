@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+{{
+    dd($latestEvent);
+}}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
