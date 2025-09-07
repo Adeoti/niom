@@ -1,5 +1,7 @@
 {{
     dd($latestEvent);
+    // log the latest event to the laravel log
+    \Log::info('Latest Event:', $latestEvent->toArray());
 }}<!DOCTYPE html>
 <html lang="en">
 <head>
