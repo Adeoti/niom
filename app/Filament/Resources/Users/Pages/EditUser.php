@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources\Users\Pages;
 
-use App\Filament\Resources\Users\UserResource;
-use Filament\Actions\DeleteAction;
+use App\Models\User;
 use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\Users\UserResource;
 
 class EditUser extends EditRecord
 {
@@ -15,7 +16,9 @@ class EditUser extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            DeleteAction::make()
+                // only visible if the user is not admin
+                ->visible(fn(User $record): bool => !$record->is_admin),
         ];
     }
 }
