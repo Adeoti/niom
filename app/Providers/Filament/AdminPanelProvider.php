@@ -39,6 +39,8 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Green,
             ])
             ->brandName('NIOTIM Admin')
+            ->brandLogo(asset('images/niotim-logo.jpeg'))
+            ->favicon(asset('images/niotim-logo.jpeg'))
             // ->assets([
             //     Css::make('custom-stylesheet', resource_path('css/custom.css')),
             //     Js::make('custom-script', resource_path('js/custom.js')),

@@ -12,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
+    <link rel="icon" type="image/png" href="{{ asset('images/niotim-logo.jpeg') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
@@ -321,8 +322,10 @@
     <header class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-xl mr-3 shadow-md">N</div>
-                <span class="text-xl font-bold text-primary-500">NIOTIM</span>
+                <div class="w-12 h-12 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-xl mr-3 shadow-md">
+                    <img src="{{ asset('images/niotim-logo.jpeg') }}" alt="">
+                </div>
+                {{-- <span class="text-xl font-bold text-primary-500">NIOTIM</span> --}}
             </div>
             
             <!-- Desktop Navigation -->

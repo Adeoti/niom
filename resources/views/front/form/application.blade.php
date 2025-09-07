@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="icon" type="image/png" href="{{ asset('images/niotim-logo.jpeg') }}" />
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     
     <script>
@@ -189,6 +190,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div class="p-8 border-b border-gray-200">
+                    <center><img src="{{ asset('images/niotim-logo.jpeg') }}" alt="" style="height:100px; margin:20px 0px;"></center>
                     <h2 class="text-3xl font-bold text-primary-500 mb-2">NIOTIM Membership Application</h2>
                     <p class="text-dark-600">Complete all sections of this form to apply for membership</p>
                     

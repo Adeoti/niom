@@ -1,7 +1,9 @@
 <aside class="sidebar" id="sidebar">
     <div class="p-5">
         <div class="flex items-center space-x-3 mb-8">
-            <div class="w-12 h-12 rounded-full bg-white text-primary-500 flex items-center justify-center font-bold text-xl shadow-md">N</div>
+            <div class="w-12 h-12 rounded-full bg-white text-primary-500 flex items-center justify-center font-bold text-xl shadow-md">
+                <img src="{{ asset('images/niotim-logo.jpeg') }}" alt="" class="h-10 w-10 rounded-full">
+            </div>
             <div>
                 <h2 class="font-semibold">NIOTIM</h2>
                 <p class="text-accent-500 text-sm">Member Portal</p>

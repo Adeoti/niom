@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('images/niotim-logo.jpeg') }}" />
     
     <script>
         tailwind.config = {
@@ -215,7 +216,9 @@
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
-                <div class="w-16 h-16 rounded-full bg-white text-primary-500 flex items-center justify-center text-2xl font-bold mx-auto mb-4">N</div>
+                <div class="w-16 h-16 rounded-full bg-white text-primary-500 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                    <center><img src="{{ asset('images/niotim-logo.jpeg') }}" alt=""></center>
+                </div>
                 <h1 class="text-2xl font-bold">Welcome to NIOTIM</h1>
                 <p class="text-accent-300">Sign in to your account</p>
             </div>
