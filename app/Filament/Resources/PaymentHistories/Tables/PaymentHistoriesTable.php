@@ -30,8 +30,9 @@ class PaymentHistoriesTable
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
+                    ->label("Payment Date")
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
