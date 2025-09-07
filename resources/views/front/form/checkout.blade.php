@@ -131,6 +131,17 @@
                     
                     <div class="p-8">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                             @php
+                        $total_amount = $payment->amount;
+                        // Add Paystack charges
+                        $percentageCharge = config('paystack.paystack_charges_percentage', 1.5);
+                        $flatCharge = config('paystack.paystack_charges_flat', 100);
+                        $paramountCharge = config('paystack.paramount_charges_flat', 500);
+                        $transaction_fee = ($payment->amount * $percentageCharge / 100) + $flatCharge + $paramountCharge;
+                        $total_amount += $transaction_fee;
+
+                    @endphp
+
                             <!-- Order Summary -->
                             <div>
                                 <h3 class="text-xl font-semibold text-primary-500 mb-6">Order Summary</h3>
@@ -150,11 +161,15 @@
                                         <span class="text-dark-600">Membership Fee:</span>
                                         <span class="font-semibold" id="summary-membership-feei">₦ {{number_format($payment?->amount,2)}}</span>
                                     </div>
+                                    <div class="flex justify-between items-center mb-4">
+                                        <span class="text-dark-600">Transaction Fee:</span>
+                                        <span class="font-semibold" id="summary-membership-feei">₦ {{number_format($transaction_fee,2)}}</span>
+                                    </div>
                                     
                                     <div class="border-t border-gray-200 pt-4 mt-2">
                                         <div class="flex justify-between items-center">
                                             <span class="text-lg font-semibold">Total:</span>
-                                            <span class="text-xl font-bold text-primary-500" id="summary-totali">₦ {{number_format($payment?->amount,2)}}</span>
+                                            <span class="text-xl font-bold text-primary-500" id="summary-totali">₦ {{number_format($total_amount,2)}}</span>
                                         </div>
                                     </div>
                                 </div>

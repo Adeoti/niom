@@ -26,7 +26,7 @@ class PaymentService
         try {
             // Create a unique reference
             $reference = 'PY_' . uniqid() . '_' . time();
-            
+
             // Prepare transaction data
             $transactionData = [
                 'email' => $email,
@@ -63,10 +63,9 @@ class PaymentService
                 'authorization_url' => $result['data']['authorization_url'],
                 'reference' => $reference
             ];
-
         } catch (\Exception $e) {
             Log::error('Payment initialization error: ' . $e->getMessage());
-            
+
             return [
                 'success' => false,
                 'message' => 'Failed to initialize payment. Please try again.'
@@ -99,7 +98,6 @@ class PaymentService
             ]);
 
             return $paymentHistory;
-
         } catch (\Exception $e) {
             Log::error('Payment recording error: ' . $e->getMessage());
             return false;
@@ -137,7 +135,7 @@ class PaymentService
     public function getPendingPayments($membership)
     {
         $activePayments = Payment::where('is_active', true)
-            ->where(function($query) {
+            ->where(function ($query) {
                 $query->where('payment_targets', 'all')
                     ->orWhere('type', '!=', 'application_fee');
             })
@@ -148,6 +146,15 @@ class PaymentService
         $overdueCount = 0;
         $dueSoonCount = 0;
 
+        // $transaction_fee = Paystack charges
+        $transaction_fee = config('paystack.paramount_charges_flat', 500);
+        $transaction_fee += config('paystack.paystack_charges_flat', 100);
+
+
+        // Add transaction fee to total due
+        $totalDue += $transaction_fee;
+
+
         foreach ($activePayments as $payment) {
             $hasPaid = PaymentHistory::where('payment_id', $payment->id)
                 ->where('membership_id', $membership->id)
@@ -157,7 +164,10 @@ class PaymentService
             if (!$hasPaid) {
                 $dueStatus = $this->getDueStatus($payment);
 
+                $transaction_fee += ($payment->amount * config('paystack.paystack_charges_percentage', 1.5) / 100);
+
                 $pendingPayments[] = [
+                    'transaction_fee' => $transaction_fee,
                     'payment' => $payment,
                     'due_status' => $dueStatus,
                 ];

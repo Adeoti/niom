@@ -61,6 +61,12 @@ class PaymentController extends Controller
         // Get the amount from payment instead
         $amount = $payment->amount;
 
+        // Add Paystack charges
+        $percentageCharge = config('paystack.paystack_charges_percentage', 1.5);
+        $flatCharge = config('paystack.paystack_charges_flat', 100);
+        $paramountCharge = config('paystack.paramount_charges_flat', 500);
+        $amount += ($amount * $percentageCharge / 100) + $flatCharge + $paramountCharge;
+
         // Initialize payment
         $result = $this->paymentService->initializePayment($payment, $membership, $amount, $user->email);
 

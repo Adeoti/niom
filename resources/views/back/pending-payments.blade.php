@@ -146,12 +146,24 @@
                 </div>
                 <div class="flex flex-col items-end">
                     <p class="text-2xl font-bold text-dark-800 mb-2">₦{{ number_format($payment->amount, 2) }}</p>
+                    @php
+                        $total_amount = $payment->amount;
+                        // Add Paystack charges
+                        $percentageCharge = config('paystack.paystack_charges_percentage', 1.5);
+                        $flatCharge = config('paystack.paystack_charges_flat', 100);
+                        $paramountCharge = config('paystack.paramount_charges_flat', 500);
+                        $transaction_fee = ($payment->amount * $percentageCharge / 100) + $flatCharge + $paramountCharge;
+                        $total_amount += $transaction_fee;
+
+                    @endphp
+
+                    <p class="text-sm text-dark-500 bg-red-100 py-2 px-4 rounded-3xl my-2">+Transaction Fee: ₦{{ number_format($transaction_fee, 2) }}</p>
                     <form action="{{ route('payment.initialize', $payment) }}" method="POST">
                         @csrf
                         <input type="hidden" name="amount" value="{{ $payment->amount }}">
                         <input type="hidden" name="payment_method" value="online">
                         <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">
-                            Pay Now
+                            Pay <span class="font-bold bg-amber-200 px-2 py-1 rounded-full text-black">₦ {{ number_format($total_amount, 2) }}</span> now
                         </button>
                     </form>
                 </div>
