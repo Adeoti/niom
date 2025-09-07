@@ -27,7 +27,7 @@
                 <p><strong>Payment For:</strong> {{ $payment->label }}</p>
 
                 <p><strong>Amount:</strong> ₦{{ number_format($payment->amount, 2) }}</p>
-                <p><strong>Total Paid (including transaction fee):</strong> ₦{{ number_format($total_amount, 2) }}</p>
+                <p><strong>Total Paid (including transaction fee):</strong> ₦{{ number_format($amount, 2) }}</p>
                 <p><strong>Payment Method:</strong> {{ $payment->payment_method ?? 'Online' }}</p>
                 <p><strong>Transaction Date:</strong> {{ now()->format('F j, Y') }}</p>
 
