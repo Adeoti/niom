@@ -55,10 +55,7 @@ class PaymentController extends Controller
             return redirect()->back()->with('error', 'You need a membership to make payments.');
         }
 
-        // Validate amount
-        $request->validate([
-            'amount' => 'required|numeric|min:100', // Minimum amount
-        ]);
+
 
         // 
         // Get the amount from payment instead
