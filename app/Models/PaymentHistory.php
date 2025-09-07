@@ -12,6 +12,7 @@ class PaymentHistory extends Model
         'payment_id',
         'amount',
         'payment_method',
+        'transaction_reference',
         'api_response',
         'status',
     ];
