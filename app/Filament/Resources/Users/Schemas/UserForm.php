@@ -26,6 +26,7 @@ class UserForm
                     ->required(),
                 ToggleButtons::make('is_admin')
                     ->label('Is Admin?')
+                    ->inline()
                     ->options([
                         1 => 'Yes',
                         0 => 'No',
