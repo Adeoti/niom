@@ -948,7 +948,7 @@
                             <div class="w-10 h-10 rounded-full bg-white text-primary-500 flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <span>nioitim@nigeria.org</span>
+                            <span>info@niotim.org.ng</span>
                         </div>
                     </div>
                     
@@ -1079,7 +1079,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-accent-500"></i>
-                            <span>nioitim@nigeria.org</span>
+                            <span>info@nioitim.org.ng</span>
                         </li>
                     </ul>
                 </div>
