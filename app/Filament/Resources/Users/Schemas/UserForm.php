@@ -22,6 +22,7 @@ class UserForm
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
                     ->password()
+                    ->revealable()
                     ->required(),
                 ToggleButtons::make('is_admin')
                     ->label('Is Admin?')
