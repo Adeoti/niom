@@ -157,13 +157,15 @@
 
                     @endphp
 
-                    <p class="text-sm text-dark-500 bg-red-100 py-2 px-4 rounded-3xl my-2">+Transaction Fee: ₦{{ number_format($transaction_fee, 2) }}</p>
+                    <p class="text-sm text-dark-500 bg-red-100/50 py-2 px-4 rounded-3xl my-2">+Transaction Fee: ₦{{ number_format($transaction_fee, 2) }}</p>
+                    <p class="text-sm text-dark-500 bg-red-100/50 py-2 px-4 rounded-3xl mb-1.5 font-medium">Total: ₦{{ number_format($total_amount, 2) }}</p>
                     <form action="{{ route('payment.initialize', $payment) }}" method="POST">
                         @csrf
                         <input type="hidden" name="amount" value="{{ $payment->amount }}">
                         <input type="hidden" name="payment_method" value="online">
                         <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-medium">
-                            Pay <span class="font-bold bg-amber-200 px-2 py-1 rounded-full text-black">₦ {{ number_format($total_amount, 2) }}</span> now
+                            {{-- Pay <span class="font-bold bg-amber-200 px-2 py-1 rounded-full text-black">₦ {{ number_format($total_amount, 2) }}</span> now --}}
+                            Pay now
                         </button>
                     </form>
                 </div>
