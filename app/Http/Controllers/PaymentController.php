@@ -49,7 +49,7 @@ class PaymentController extends Controller
         $user = Auth::user();
         $membership = $user->membership;
 
-        log("Initializing payment for user ID: {$user->id}, Payment ID: {$payment->id}");
+        Log::info("Initializing payment for user ID: {$user->id}, Payment ID: {$payment->id}");
 
         if (!$membership) {
             return redirect()->back()->with('error', 'You need a membership to make payments.');
