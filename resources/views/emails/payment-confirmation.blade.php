@@ -24,14 +24,23 @@
             
             <div class="payment-details">
                 <h3>Payment Details:</h3>
-                <p><strong>Payment For:</strong> {{ $payment->name }}</p>
-                <p><strong>Amount Paid:</strong> {{ number_format($amount, 2) }}</p>
+                <p><strong>Payment For:</strong> {{ $payment->label }}</p>
+
+                <p><strong>Amount:</strong> ₦{{ number_format($payment->amount, 2) }}</p>
+                <p><strong>Total Paid (including transaction fee):</strong> ₦{{ number_format($total_amount, 2) }}</p>
                 <p><strong>Payment Method:</strong> {{ $payment->payment_method ?? 'Online' }}</p>
                 <p><strong>Transaction Date:</strong> {{ now()->format('F j, Y') }}</p>
-                <p><strong>Transaction Reference:</strong> PAY-{{ uniqid() }}</p>
+
+                @php
+                    // get the transaction from payment_histories where payment_id = $payment->id and membership_id = $membership->id
+                    $transaction_reference = \App\Models\PaymentHistory::where('payment_id', $payment->id)
+                        ->where('membership_id', $membership->id)
+                        ->value('transaction_reference');
+                @endphp
+                <p><strong>Transaction Reference:</strong> {{ $transaction_reference }}</p>
             </div>
             
-            <p>This payment has been recorded against your membership account (ID: {{ $membership->id }}).</p>
+            <p>This payment has been recorded against your membership account (ID: NIOTIM-{{ $membership->id }}).</p>
             
             <p>If you have any questions about this payment, please contact our support team.</p>
             

@@ -15,6 +15,7 @@ class PaymentConfirmation extends Mailable
     public $payment;
     public $membership;
     public $amount;
+    
 
     public function __construct(Payment $payment, Membership $membership, $amount)
     {

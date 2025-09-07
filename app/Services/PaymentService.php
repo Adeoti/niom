@@ -110,7 +110,7 @@ class PaymentService
     public function sendConfirmationEmail($payment, $membership, $amount, $email)
     {
         try {
-            Mail::to($email)->send(new PaymentConfirmation($payment, $membership, $amount));
+            Mail::to($email)->send(new PaymentConfirmation($payment, $membership, $amount ));
             return true;
         } catch (\Exception $e) {
             Log::error('Payment confirmation email error: ' . $e->getMessage());
