@@ -47,8 +47,10 @@ class PaymentHistoryForm
                     ->unique(ignoreRecord: true),
 
                 Hidden::make('api_response')
-                    ->default('This was a manual entry by the admin ' . Auth::user()->name)
-                    ->columnSpanFull(),
+                    ->default(fn() => json_encode([
+                        'message' => 'This was a manual entry by the admin ' . Auth::user()->name,
+                    ])),
+
                 Hidden::make('status')
                     ->default('completed')
                     ->required(),
