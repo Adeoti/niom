@@ -27,10 +27,10 @@ class PaymentHistoryResource extends Resource
     protected static ?int $navigationSort = 2;
     protected static string|UnitEnum|null $navigationGroup = 'Finance';
 
-    public static function getCreateAuthorizationResponse(): Response
-    {
-        return Response::deny('Creation disabled for this resource.');
-    }
+    // public static function getCreateAuthorizationResponse(): Response
+    // {
+    //     return Response::deny('Creation disabled for this resource.');
+    // }
 
     public static function form(Schema $schema): Schema
     {
