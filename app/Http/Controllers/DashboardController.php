@@ -19,6 +19,10 @@ class DashboardController extends Controller
         $user = Auth::user();
         $membership = Membership::where('user_id', $user->id)->first();
 
+        if(!$membership){
+            abort(404);
+        }
+
         // Get upcoming events (next 30 days)
         $upcomingEvents = Event::where('event_date', '>=', now())
             ->where('is_active', true)
