@@ -936,13 +936,13 @@
                             <div class="w-10 h-10 rounded-full bg-white text-primary-500 flex items-center justify-center mt-1 mr-4 flex-shrink-0">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span>Lagos State University, Ikeja Campus, Lagos, Nigeria</span>
+                            <span>9 Tijani Adejumo Street, Off Basin Road, Ilorin, Kwara State</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-white text-primary-500 flex items-center justify-center mr-4 flex-shrink-0">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <span>+234 7035559223</span>
+                            <span>08035257252, 08033479720</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-white text-primary-500 flex items-center justify-center mr-4 flex-shrink-0">
