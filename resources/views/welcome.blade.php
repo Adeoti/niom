@@ -1086,7 +1086,7 @@
             </div>
             
             <div class="border-t border-white/20 pt-8 text-center">
-                <p>&copy; 2023 NIOTIM. All rights reserved. Website by <a href="https://wa.link/1tz78w">Paramount Computer</a></p>
+                <p>&copy; 2025 NIOTIM. All rights reserved. Website by <a href="https://wa.link/1tz78w">Paramount Computer</a></p>
             </div>
         </div>
     </footer>
