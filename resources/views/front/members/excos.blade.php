@@ -246,8 +246,8 @@
     <!-- Page Header Section -->
     <section class="hero-gradient text-white pt-32 pb-16 relative overflow-hidden">
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 slide-up">NIOTIM Members Directory</h1>
-            <p class="text-xl md:text-2xl mb-2 slide-up" style="animation-delay: 0.2s;">Discover our community of professionals and students</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 slide-up">NIOTIM Executive Members Directory</h1>
+            <p class="text-xl md:text-2xl mb-2 slide-up" style="animation-delay: 0.2s;">Take a look at our amiable executives</p>
             <div class="w-24 h-1 bg-secondary-500 mx-auto my-8 slide-up" style="animation-delay: 0.6s;"></div>
         </div>
     </section>
@@ -362,7 +362,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-primary-50">
+    {{-- <section class="py-16 bg-primary-50">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
                 <h2 class="text-3xl font-bold text-center text-primary-500 mb-12">Membership Statistics</h2>
@@ -390,7 +390,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- CTA Section -->
     <section class="py-16 bg-primary-500 text-white">

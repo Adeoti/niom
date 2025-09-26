@@ -44,6 +44,35 @@ class MembershipController extends Controller
 
         return view('front.members.index', compact('members', 'stats'));
     }
+    public function excos()
+    {
+        $members = Membership::with(['user', 'rank:id,name,level'])
+            ->where('is_exco', true)
+            ->where('status', 'approved')
+            ->latest()
+            ->paginate(10);
+
+        Log::info('Members with ranks:', $members->toArray());
+
+
+        $stats = [
+            'total' => Membership::where('status', 'approved')->count(),
+            'students' => Membership::where('status', 'approved')
+                ->where(function ($query) {
+                    $query->where('type', 'student-hnd')
+                        ->orWhere('type', 'university-student');
+                })->count(),
+            'lecturers' => Membership::where('status', 'approved')
+                ->where(function ($query) {
+                    $query->where('type', 'polytechnic-lecturer')
+                        ->orWhere('type', 'university-lecturer');
+                })->count(),
+            'professionals' => Membership::where('status', 'approved')
+                ->where('type', 'professional')->count(),
+        ];
+
+        return view('front.members.excos', compact('members', 'stats'));
+    }
 
 
     public function checkout(Request $request)
