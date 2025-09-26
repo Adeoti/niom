@@ -337,7 +337,7 @@
     <section class="section-padding bg-white">
         <div class="container mx-auto px-4">
             <div class="mb-8 flex justify-between items-center">
-                <h2 class="text-2xl font-bold text-primary-500">Our Members <span class="text-dark-600 text-lg font-normal">(<span id="totalMembers">{{ $stats['total'] }}</span> total)</span></h2>
+                <h2 class="text-2xl font-bold text-primary-500">Our Executives <span class="text-dark-600 text-lg font-normal">(<span id="totalMembers">{{ $stats['total'] }}</span> total)</span></h2>
                 
                 <div class="flex items-center space-x-2">
                     <span class="text-dark-600">View:</span>
