@@ -27,6 +27,10 @@
                             class="block px-4 py-2 text-dark-500 hover:bg-primary-50 hover:text-primary-500">
                             Excos
                             </a>
+                            <a href="{{route('membership.councils')}}#about" 
+                            class="block px-4 py-2 text-dark-500 hover:bg-primary-50 hover:text-primary-500">
+                            Councils
+                            </a>
                         </li>
                        
                     </ul>
@@ -64,6 +68,7 @@
                 </button>
                 <ul id="about-submenu" class="hidden pl-4 space-y-2">
                     <li><a href="{{route('membership.excos')}}" class="block py-2 text-dark-500 hover:text-primary-500">Excos</a></li>
+                    <li><a href="{{route('membership.councils')}}" class="block py-2 text-dark-500 hover:text-primary-500">Councils</a></li>
 
                 </ul>
             </li>

@@ -27,7 +27,8 @@ class Membership extends Model
         'biography',
         'membership_rank_id',
         'qualification',
-        'is_exco'
+        'is_exco',
+        'is_council',
     ];
 
     protected $casts = [
@@ -35,7 +36,8 @@ class Membership extends Model
         'application_date' => 'datetime',
         'approval_date' => 'datetime',
         'featured_on_homepage' => 'boolean',
-        'is_exco' => 'boolean'
+        'is_exco' => 'boolean',
+        'is_council' => 'boolean',
 
     ];
 

@@ -76,7 +76,8 @@ class MembershipsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 ToggleColumn::make('featured_on_homepage'),
-                ToggleColumn::make('is_exco'),
+                ToggleColumn::make('is_exco')->label('Exco Member?'),
+                ToggleColumn::make('is_council')->label('Council Member?'),
             ])
             ->filters([
                 //

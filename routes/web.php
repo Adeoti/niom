@@ -114,5 +114,6 @@ Route::post('/membership/apply', [\App\Http\Controllers\MembershipController::cl
 Route::get('/checkout', [\App\Http\Controllers\MembershipController::class, 'checkout'])->name('membership.checkout');
 Route::get('/members', [MembershipController::class, 'index'])->name('membership.index');
 Route::get('/excos', [MembershipController::class, 'excos'])->name('membership.excos');
+Route::get('/councils', [MembershipController::class, 'councils'])->name('membership.councils');
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 Route::get('application/form', [MembershipController::class, 'create'])->name('membership.create');
