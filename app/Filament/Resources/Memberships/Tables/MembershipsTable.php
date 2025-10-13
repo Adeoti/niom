@@ -94,7 +94,7 @@ class MembershipsTable
                         ->requiresConfirmation()
                         ->action(function (Membership $record) {
                             $record->update([
-                                'status' => 'rejected',
+                                'status' => 'pending',
                                 'approval_date' => null
                             ]);
                         }),
