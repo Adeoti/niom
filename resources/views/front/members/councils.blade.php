@@ -734,6 +734,7 @@ function setupEventListeners() {
                     </div>
                     <div class="member-details">
                         <h3 class="text-xl font-semibold text-primary-500 mb-2">${member.title} ${member.surname} ${member.first_name}</h3>
+                        <p class="text-dark-600 font-medium mb-1 bg-green-700 text-white text-center rounded-2xl my-1.5">${member.membership_status}</p>
                         <p class="text-gray-600 text-sm mb-3">${member.nationality}</p>
                         
                         <div class="flex items-center text-sm text-gray-500 mb-2">

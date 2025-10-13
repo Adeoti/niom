@@ -29,6 +29,9 @@ class MembershipsTable
                     ->sortable(),
                 TextColumn::make('title')
                     ->searchable(),
+                TextColumn::make('membership_status')
+                ->searchable()
+                ->placeholder('Member'),
                 TextColumn::make('surname')
                     ->searchable(),
                 TextColumn::make('first_name')

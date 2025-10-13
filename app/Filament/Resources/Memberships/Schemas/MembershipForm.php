@@ -65,6 +65,9 @@ class MembershipForm
                         ->searchable()
                         ->label('Membership Rank')
                         ->options(fn() => MembershipRank::all()->pluck('name', 'id')),
+                    TextInput::make('membership_status')
+                        ->default('Member')
+                        ->required(),
                     Textarea::make('address')
                         ->required()
                         ->columnSpanFull(),

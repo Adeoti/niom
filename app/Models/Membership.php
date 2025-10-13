@@ -29,6 +29,7 @@ class Membership extends Model
         'qualification',
         'is_exco',
         'is_council',
+        'membership_status'
     ];
 
     protected $casts = [
