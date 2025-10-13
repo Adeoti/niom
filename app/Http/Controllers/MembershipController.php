@@ -49,7 +49,7 @@ class MembershipController extends Controller
         $members = Membership::with(['user', 'rank:id,name,level'])
             ->where('is_exco', true)
             ->where('status', 'approved')
-            ->latest()
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         Log::info('Members with ranks:', $members->toArray());
@@ -78,7 +78,7 @@ class MembershipController extends Controller
         $members = Membership::with(['user', 'rank:id,name,level'])
             ->where('is_council', true)
             ->where('status', 'approved')
-            ->latest()
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         // Log::info('Members with ranks:', $members->toArray());
