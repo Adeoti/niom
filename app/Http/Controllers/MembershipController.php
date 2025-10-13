@@ -20,7 +20,7 @@ class MembershipController extends Controller
         $members = Membership::with(['user', 'rank:id,name,level'])
 
             ->where('status', 'approved')
-            ->latest()
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         Log::info('Members with ranks:', $members->toArray());

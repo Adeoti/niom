@@ -20,6 +20,7 @@ class News extends Model
         'publish_date',
         'is_published',
         'author_id',
+        'video_url'
     ];
 
     protected $casts = [

@@ -759,9 +759,7 @@ function setupEventListeners() {
                 memberCard.innerHTML = `
                     <div class="member-image relative">
                         <img src="${passportUrl}" alt="${member.title} ${member.surname} ${member.first_name}" class="w-full h-full object-cover">
-                        <div class="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            ${member.type}
-                        </div>
+                       
                     </div>
                     <div class="member-details">
                         <h3 class="text-xl font-semibold text-primary-500 mb-2">${member.title} ${member.surname} ${member.first_name}</h3>

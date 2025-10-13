@@ -246,6 +246,28 @@
     </section>
     @endif
 
+@if($news->video_url)
+<section class="mb-12">
+    <div class="container mx-auto px-4">
+        <div class="rounded-xl overflow-hidden shadow-lg slide-up flex justify-center">
+            <div class="w-full md:w-2/3 lg:w-1/2 mx-auto bg-black" style="height:560px;">
+                @php
+                    $embedUrl = str_replace('watch?v=', 'embed/', $news->video_url);
+                @endphp
+                <iframe 
+                    src="{{ $embedUrl }}" 
+                    class="w-full h-full"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+
     <!-- News Content -->
     <section class="section-padding pt-0">
         <div class="container mx-auto px-4">

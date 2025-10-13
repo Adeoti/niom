@@ -47,6 +47,9 @@ class NewsForm
                             ->directory('featured_images')
                             ->visibility('public')
                             ->required(),
+                        TextInput::make('video_url')
+                            ->placeholder('YouTube Video URL')
+                        ,
                         DatePicker::make('publish_date')
                             ->required(),
                         ToggleButtons::make('is_published')
