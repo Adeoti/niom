@@ -86,6 +86,18 @@ class MembershipsTable
                 ActionGroup::make([
                     ViewAction::make(),
                     EditAction::make(),
+                    Action::make('Disapprove')
+                        ->visible(function (Membership $record) {
+                            return $record->status === 'approved';
+                        })
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->action(function (Membership $record) {
+                            $record->update([
+                                'status' => 'rejected',
+                                'approval_date' => null
+                            ]);
+                        }),
                     Action::make('Approve')
                         ->visible(function (Membership $record) {
                             return $record->status === 'pending';
