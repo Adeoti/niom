@@ -100,7 +100,7 @@ class MembershipsTable
                         }),
                     Action::make('Approve')
                         ->visible(function (Membership $record) {
-                            return $record->status === 'pending';
+                            return $record->status === 'pending' || $record->status === 'rejected';
                         })
                         ->color('success')
                         ->requiresConfirmation()
