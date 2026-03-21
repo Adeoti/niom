@@ -13,7 +13,7 @@
                         <!-- About Dropdown -->
                         <li class="relative group">
                     <!-- Parent -->
-                    <a href="{{route('home')}}#about"
+                    <a href="{{route('about')}}"
                     class="text-dark-500 hover:text-primary-500 transition font-medium flex items-center">
                         About
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
@@ -37,7 +37,9 @@
                 </li>
 
 
-                        <li><a href="{{route('home')}}#membership" class="text-dark-500 hover:text-primary-500 transition font-medium">Membership</a></li>
+                        <li><a href="{{route('membership')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Membership</a></li>
+                        <li><a href="{{route('communique')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Communiqué</a></li>
+
                         <li><a href="{{route('membership.create')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">Application</a></li>
                         <li><a href="{{route('news.index')}}" class="text-dark-500 hover:text-primary-500 transition font-medium">News</a></li>
                         <li><a href="{{route('home')}}#contact" class="text-dark-500 hover:text-primary-500 transition font-medium">Contact</a></li>
@@ -73,7 +75,7 @@
                 </ul>
             </li>
 
-            <li><a href="{{route('home')}}#membership" class="text-dark-500 hover:text-primary-500 transition font-medium block py-2">Membership</a></li>
+            <li><a href="{{route('communique')}}" class="text-dark-500 hover:text-primary-500 transition font-medium block py-2">Communiqué</a></li>
             <li><a href="{{route('membership.create')}}" class="text-dark-500 hover:text-primary-500 transition font-medium block py-2">Application</a></li>
             <li><a href="{{route('news.index')}}" class="text-dark-500 hover:text-primary-500 transition font-medium block py-2">News</a></li>
             <li><a href="{{route('home')}}#contact" class="text-dark-500 hover:text-primary-500 transition font-medium block py-2">Contact</a></li>

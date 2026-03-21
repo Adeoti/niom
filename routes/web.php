@@ -24,6 +24,17 @@ Route::get('/', function () {
     return view('welcome', compact('news', 'members', 'latestEvent'));
 })->name('home');
 
+Route::get('about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('communique', function () {
+    return view('communique');
+})->name('communique');
+
+Route::get('membership', function () {
+    return view('membership');
+})->name('membership');
 
 
 // Authentication Routes
