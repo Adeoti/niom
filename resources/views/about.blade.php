@@ -263,11 +263,8 @@
     <header id="navbar" class="fixed w-full bg-white z-50 transition-all duration-300 py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo / Brand -->
-            <a href="#" class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-chart-line text-white text-xl"></i>
-                </div>
-                <span class="font-montserrat font-bold text-xl text-dark-800">NIOTIM</span>
+            <a href="{{route('home')}}" class="flex items-center space-x-2">
+               <img src="{{asset('images/niotim-logo.jpeg')}}" alt="NIOTIM Logo" class="w-10 h-10 rounded-full object-cover">
             </a>
             
             <!-- Desktop Navigation -->

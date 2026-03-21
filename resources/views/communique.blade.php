@@ -31,7 +31,9 @@
     <!-- Same header as membership page -->
     <header id="navbar" class="fixed w-full bg-white z-50 transition-all duration-300 py-4 shadow-sm">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2"><div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center"><i class="fas fa-chart-line text-white"></i></div><span class="font-montserrat font-bold text-xl">NIOTIM</span></a>
+              <a href="{{route('home')}}" class="flex items-center space-x-2">
+               <img src="{{asset('images/niotim-logo.jpeg')}}" alt="NIOTIM Logo" class="w-10 h-10 rounded-full object-cover">
+            </a>
             <nav class="hidden lg:flex space-x-8">
                 <a href="{{route('home')}}" class="text-dark-600 hover:text-primary-500 transition font-medium">Home</a>
                 <a href="{{route('about')}}" class="text-dark-600 hover:text-primary-500 transition font-medium">About</a>

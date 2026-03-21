@@ -1,8 +1,9 @@
 <header class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-12 h-12 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-xl mr-3 shadow-md">N</div>
-                <span class="text-xl font-bold text-primary-500">NIOTIM</span>
+                <div class="w-12 h-12 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-xl mr-3 shadow-md">
+                    <img src="{{asset('images/niotim-logo.jpeg')}}" alt="NIOTIM Logo" class="w-10 h-10 rounded-full object-cover">
+                </div>
             </div>
             
             <!-- Desktop Navigation -->
