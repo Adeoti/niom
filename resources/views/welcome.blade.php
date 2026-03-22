@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIOTIM - Nigeria Institute of Office Technology and Information Management</title>
+    <title>NIOTIM - Nigerian Institute of Office Technology and Information Management</title>
     
     <!-- Required Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/react@18.0.0/umd/react.development.js"></script>
@@ -329,7 +329,7 @@
         
         <div class="container mx-auto px-4 text-center relative z-10">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 slide-up">
-                Nigeria Institute Of Office Technology And Information Management 
+                Nigerian Institute Of Office Technology And Information Management 
             </h1>
             <p class="text-xl md:text-2xl mb-2 slide-up" style="animation-delay: 0.2s;">Office Technology and Information Management</p>
             <p class="text-lg md:text-xl mb-2 slide-up" style="animation-delay: 0.4s;">for Sustainable Development in Digital Economy</p>
