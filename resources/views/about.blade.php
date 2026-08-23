@@ -319,13 +319,32 @@
     <!-- Introduction & Objects Section -->
     <section class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-6">Who We Are</h2>
-                <div class="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
-                <p class="text-lg text-dark-600 leading-relaxed">
-                    Nigerian Institute of Office Technology and Information Management (NIOTIM) is a registered body of academia and professionals in the field of office technology and information management in the universities and polytechnics across all geopolitical zones of Nigeria. 
-                    <strong class="text-primary-600">Incorporated under the Companies and Allied Matters Acts of 2020 on 27th February, 2025 with Registration Number 8301138.</strong>
-                </p>
+            <div class="max-w-4xl mx-auto mb-16 animate-on-scroll">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-6">About Us</h2>
+                    <div class="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
+                </div>
+                <div class="text-left space-y-5">
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        The Nigerian Institute of Office Technology and Information Management (NIOTIM) is a professional body dedicated to the advancement of the Office Technology and Information Management profession in Nigeria. The Institute, incorporated on 27th February, 2025, is committed to promoting excellence, professionalism, innovation, ethical practice, and lifelong learning among practitioners, lecturers, researchers, and students in the field.
+                        <strong class="text-primary-600">Incorporated under the Companies and Allied Matters Act of 2020 with Registration Number 8301138.</strong>
+                    </p>
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        NIOTIM provides a platform for development of office technology and management, and information management professionals capable of meeting the challenges of today's dynamic digital workplace. The Institute promotes best practices in office administration, information management, digital technologies, records management, business communication, and related disciplines through professional development programmes, conferences, seminars, webinars, workshops, publications, certification, and research.
+                    </p>
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        NIOTIM was established with an object to collaborate with educational institutions, government agencies, industry stakeholders, and international professional organisations to strengthen professional standards, encourage innovation, and enhance the quality of curriculum contents of Office Technology and Management on the one hand, and Office and Information Management in tertiary institutions in Nigeria on the other hand.
+                    </p>
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        As a membership-based professional institute with membership covering all the six geopolitical zones of the nation, NIOTIM offers opportunities for networking, career development, mentorship, leadership, and mandatory continuous professional training. The Institute also recognises outstanding contributions to the profession through its fellowship, awards, and professional certification programmes.
+                    </p>
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        Driven by integrity, professionalism, service, innovation, and excellence; members of NIOTIM, the majority of whom are lecturers in the Universities and Polytechnics, remain committed to nurturing and producing highly skilled professionals who contribute meaningfully to organisational effectiveness, national development, and the global knowledge economy.
+                    </p>
+                    <p class="text-lg text-dark-600 leading-relaxed">
+                        Whether you are a learner, lecturer, researcher, or practising professional, NIOTIM welcomes you to become part of a vibrant community dedicated to shaping the future of Office Technology and Information Management in Nigeria.
+                    </p>
+                </div>
             </div>
             
             <!-- Objects of the Institute -->
@@ -560,7 +579,7 @@
                 </div>
             </div>
             <div class="border-t border-white/20 pt-8 text-center">
-                <p>&copy; 2025 NIOTIM. All rights reserved. Website by <a href="#" class="hover:text-accent-500">Paramount Computer</a></p>
+                <p>&copy; 2025 NIOTIM. All rights reserved. Website by <a href="https://paratech.ng" class="hover:text-accent-500">Paramount Computer</a></p>
             </div>
         </div>
     </footer>

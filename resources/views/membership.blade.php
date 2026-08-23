@@ -94,6 +94,16 @@
         .mobile-menu.open {
             transform: translateX(0);
         }
+
+        .exco-card {
+            transition: all 0.3s ease;
+            border-top: 4px solid #0a914c;
+        }
+
+        .exco-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 
@@ -147,6 +157,55 @@
         </div>
     </section>
 
+    <!-- National Executive Council Section -->
+    <section class="py-16 bg-primary-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-800 mb-4">National Executive Council</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
+                <p class="text-dark-600 max-w-2xl mx-auto">The officers leading NIOTIM's mission and vision</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">National President</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Lanre Akewusola</h3>
+                    <p class="text-sm text-gray-500 mt-1">Kwara State Polytechnic, Ilorin, Kwara State, Nigeria</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">National Secretary</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Lydia Yemisi Oludele</h3>
+                    <p class="text-sm text-gray-500 mt-1">Osun State Polytechnic, Iree, Osun State, Nigeria</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">National Treasurer</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Virginia Orchanya Onche</h3>
+                    <p class="text-sm text-gray-500 mt-1">University of Ibadan, Ibadan, Oyo State</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">National Public Relations Officer</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Stephen Onyeanwuna Osakwe</h3>
+                    <p class="text-sm text-gray-500 mt-1">Delta State Polytechnic, Otefe-Ogara, Delta State, Nigeria</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">National Financial Secretary</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Oluwatosin Abiodun Ologbosere</h3>
+                    <p class="text-sm text-gray-500 mt-1">Lead City University, Ibadan, Oyo State</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">Director of Membership Services</p>
+                    <h3 class="text-lg font-bold text-dark-800">Dr Ado Gude Garba</h3>
+                    <p class="text-sm text-gray-500 mt-1">Federal University of Science and Technology, Kabo, Kano State, Nigeria</p>
+                </div>
+                <div class="exco-card bg-white rounded-xl shadow p-6 sm:col-span-2 lg:col-span-1">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-primary-500 mb-2">Editor-in-Chief (GJIROTIM)</p>
+                    <h3 class="text-lg font-bold text-dark-800">Associate Professor F. B. K. Fasae</h3>
+                    <p class="text-sm text-gray-500 mt-1">Bamidele Olumilua University of Education, Science, and Technology, Ikere-Ekiti, Ekiti State, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Membership Table Section -->
     <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
@@ -166,7 +225,7 @@
                     <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-primary-100"
                         data-grade="Member">Members</button>
                     <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-primary-100"
-                        data-grade="Asst. Member">Assistant Members</button>
+                        data-grade="Asst. Member">Associate Members</button>
                 </div>
             </div>
 
@@ -340,8 +399,8 @@
             {
                 sn: 15,
                 no: "FN0016",
-                name: "Dr Fasae, Felicia Bosede Kehinde",
-                work: "Bamidele Olumilua University of Education, Ikere-Ekiti",
+                name: "Associate Prof. Fasae, Felicia Bosede Kehinde",
+                work: "Bamidele Olumilua University of Education, Science and Technology, Ikere-Ekiti, Ekiti State",
                 email: "fafeboke@gmail.com",
                 phone: "08033726612",
                 grade: "Fellow"
@@ -375,6 +434,15 @@
             },
             {
                 sn: 19,
+                no: "FN0020",
+                name: "Dr. Ologbosere, Oluwatosin Abiodun",
+                work: "Lead City University, Ibadan, Oyo State",
+                email: "",
+                phone: "",
+                grade: "Fellow"
+            },
+            {
+                sn: 20,
                 no: "MN0006",
                 name: "Mrs. Ikuenomore, Olubusayo Mosunmola",
                 work: "Tai Solarin University of Education",
@@ -383,7 +451,7 @@
                 grade: "Member"
             },
             {
-                sn: 20,
+                sn: 21,
                 no: "MN0007",
                 name: "Dr Enyekit, Ebenezer Owaji",
                 work: "Captain Elechi Amadi Polytechnic, Rumuola",
@@ -392,7 +460,7 @@
                 grade: "Member"
             },
             {
-                sn: 21,
+                sn: 22,
                 no: "MN0008",
                 name: "Mr Asimegbe Gabriel Obozuwa",
                 work: "Federal Polytechnic, Offa",
@@ -401,7 +469,7 @@
                 grade: "Member"
             },
             {
-                sn: 22,
+                sn: 23,
                 no: "MN0009",
                 name: "Mr. Adegbe, Emmanuel",
                 work: "Federal Polytechnic, Offa",
@@ -410,7 +478,7 @@
                 grade: "Member"
             },
             {
-                sn: 23,
+                sn: 24,
                 no: "MN0010",
                 name: "Dr Iheukwumere, Odochi Chinwe-Edozie",
                 work: "Ogbonnaya Onu Polytechnic, Aba",
@@ -419,7 +487,7 @@
                 grade: "Member"
             },
             {
-                sn: 24,
+                sn: 25,
                 no: "MN0011",
                 name: "Mrs Yusuf Ramat",
                 work: "Federal Polytechnic, Offa",
@@ -428,7 +496,7 @@
                 grade: "Member"
             },
             {
-                sn: 25,
+                sn: 26,
                 no: "MN0012",
                 name: "Dr. Alikornwo, Peter Mezenye",
                 work: "Captain Elechi Amadi Polytechnic, P/Harcourt",
@@ -437,7 +505,7 @@
                 grade: "Member"
             },
             {
-                sn: 26,
+                sn: 27,
                 no: "MN0013",
                 name: "Mrs. Immam, Ramat Omolola",
                 work: "Federal Polytechnic, Offa",
@@ -446,7 +514,7 @@
                 grade: "Member"
             },
             {
-                sn: 27,
+                sn: 28,
                 no: "MN0014",
                 name: "Mrs. Jimada, Bola Elelu",
                 work: "Federal Training Centre, Ilorin",
@@ -455,7 +523,7 @@
                 grade: "Member"
             },
             {
-                sn: 28,
+                sn: 29,
                 no: "MN0015",
                 name: "Dr. Nnaji, Florence Oluchi",
                 work: "The Federal Polytechnic, Bali",
@@ -464,7 +532,7 @@
                 grade: "Member"
             },
             {
-                sn: 29,
+                sn: 30,
                 no: "MN0016",
                 name: "Dr. Adiele, Goodluck Chidi",
                 work: "Capt. Elechi Amadi Polytechnic, Rumuola",
@@ -473,7 +541,7 @@
                 grade: "Member"
             },
             {
-                sn: 30,
+                sn: 31,
                 no: "MN0017",
                 name: "Dr. Ikoromasoma, Emmanuel",
                 work: "Rivers State University, Port Harcourt",
@@ -482,7 +550,7 @@
                 grade: "Member"
             },
             {
-                sn: 31,
+                sn: 32,
                 no: "MN0018",
                 name: "Dr Nmehiele, Edith Luke",
                 work: "Captain Elechi Amadi Polytechnic, Rumuola",
@@ -491,7 +559,7 @@
                 grade: "Member"
             },
             {
-                sn: 32,
+                sn: 33,
                 no: "MN0019",
                 name: "Dr. Ogwe, Chinyere Goodlife",
                 work: "Rivers State College of Health Science and Management Tech.",
@@ -500,7 +568,7 @@
                 grade: "Member"
             },
             {
-                sn: 33,
+                sn: 34,
                 no: "MN0020",
                 name: "Dr. Obara, Chizi Ernuchi",
                 work: "Rivers State University",
@@ -509,7 +577,7 @@
                 grade: "Member"
             },
             {
-                sn: 34,
+                sn: 35,
                 no: "MN0021",
                 name: "Dr. Omunakwe, Priscilla Obunwo",
                 work: "Rivers State University",
@@ -518,7 +586,7 @@
                 grade: "Member"
             },
             {
-                sn: 35,
+                sn: 36,
                 no: "MN0022",
                 name: "Mrs. Ayo-Ogunlusi, Veronica Abiola",
                 work: "Bamidele Olumilua University of Education",
@@ -527,7 +595,7 @@
                 grade: "Member"
             },
             {
-                sn: 36,
+                sn: 37,
                 no: "MN0023",
                 name: "Mrs. Sodiyan, Titilayo Juliet",
                 work: "Federal College of Animal Health and Production Tech., Ibadan",
@@ -536,7 +604,7 @@
                 grade: "Member"
             },
             {
-                sn: 37,
+                sn: 38,
                 no: "MN0024",
                 name: "Mr Azeez Femi",
                 work: "The Oke Ogun Polytechnic, Saki",
@@ -545,7 +613,7 @@
                 grade: "Member"
             },
             {
-                sn: 38,
+                sn: 39,
                 no: "MN0025",
                 name: "Dr Ogunyemi Olufunso Titilope",
                 work: "Ekiti State Govt. Staff Development Centre",
@@ -554,7 +622,7 @@
                 grade: "Member"
             },
             {
-                sn: 39,
+                sn: 40,
                 no: "MN0026",
                 name: "Mrs. Irokanulo, Cynthia Jane",
                 work: "Yaba College of Technology",
@@ -563,7 +631,7 @@
                 grade: "Member"
             },
             {
-                sn: 40,
+                sn: 41,
                 no: "MN0027",
                 name: "Miss Nkoro, Mary Kelechi",
                 work: "Ogbonnaya Onu Polytechnic, Abia",
@@ -572,7 +640,7 @@
                 grade: "Member"
             },
             {
-                sn: 41,
+                sn: 42,
                 no: "MN0028",
                 name: "Mr Ige, Oluwaseye Jacob",
                 work: "Yaba College of Technology",
@@ -581,7 +649,7 @@
                 grade: "Member"
             },
             {
-                sn: 42,
+                sn: 43,
                 no: "MN0029",
                 name: "Mrs. Ogunyemi, Adebola Adedotun",
                 work: "Gateway (ICT) Polytechnic, Saapade",
@@ -590,7 +658,7 @@
                 grade: "Member"
             },
             {
-                sn: 43,
+                sn: 44,
                 no: "MN0030",
                 name: "Mr. Shu'aibu, Musa",
                 work: "Jigawa State Polytechnic, Dutse",
@@ -599,7 +667,7 @@
                 grade: "Member"
             },
             {
-                sn: 44,
+                sn: 45,
                 no: "MN0031",
                 name: "Dr Kalagbor, Peace Iyingi",
                 work: "Capt. Elechi Amadi Polytechnic, Rumuola",
@@ -608,7 +676,7 @@
                 grade: "Member"
             },
             {
-                sn: 45,
+                sn: 46,
                 no: "MN0032",
                 name: "Dr Ukata Philip Festus",
                 work: "Captain Elechi Amadi Poly, Port-Harcourt",
@@ -617,7 +685,7 @@
                 grade: "Member"
             },
             {
-                sn: 46,
+                sn: 47,
                 no: "MN0033",
                 name: "Mrs Akinpelu Toyin",
                 work: "Osun State College of Technology, Esa Oke",
@@ -626,7 +694,7 @@
                 grade: "Member"
             },
             {
-                sn: 47,
+                sn: 48,
                 no: "MN0034",
                 name: "Mr Adegboye Adenrele Olalekan",
                 work: "Osun State Polytechnic, Iree",
@@ -635,7 +703,7 @@
                 grade: "Member"
             },
             {
-                sn: 48,
+                sn: 49,
                 no: "MN0035",
                 name: "Mr Abiodun Samuel Adebayo",
                 work: "Federal Polytechnic, Ado-Ekiti",
@@ -644,7 +712,7 @@
                 grade: "Member"
             },
             {
-                sn: 49,
+                sn: 50,
                 no: "MN0036",
                 name: "Dr. Agwatu, Chioma Ozuruonyeoke",
                 work: "Lagos State University of Science and Technology",
@@ -653,7 +721,7 @@
                 grade: "Member"
             },
             {
-                sn: 50,
+                sn: 51,
                 no: "MN0037",
                 name: "Mr Aliu, Zainul Abideen",
                 work: "Federal Polytechnic, Ayede",
@@ -662,7 +730,7 @@
                 grade: "Member"
             },
             {
-                sn: 51,
+                sn: 52,
                 no: "MN0038",
                 name: "Mrs. Fasipe, Oluyemisi Omowumi",
                 work: "The Polytechnic Ibadan",
@@ -671,7 +739,7 @@
                 grade: "Member"
             },
             {
-                sn: 52,
+                sn: 53,
                 no: "MN0039",
                 name: "Bankole Olabisi Grace",
                 work: "Kwara State Polytechnic, Ilorin",
@@ -680,7 +748,7 @@
                 grade: "Member"
             },
             {
-                sn: 53,
+                sn: 54,
                 no: "MN0040",
                 name: "Mr. Abiodun Wilson",
                 work: "Auchi Polytechnic, Auchi",
@@ -689,7 +757,7 @@
                 grade: "Member"
             },
             {
-                sn: 54,
+                sn: 55,
                 no: "MN0041",
                 name: "Mr. Olayanju, Tobi Emmanuel",
                 work: "Bamidele Olumilua University of Education",
@@ -698,7 +766,7 @@
                 grade: "Member"
             },
             {
-                sn: 55,
+                sn: 56,
                 no: "MN0042",
                 name: "Mr. Osholonge, Agboola Rasheed",
                 work: "Bamidele Olumilua University of Education",
@@ -707,7 +775,7 @@
                 grade: "Member"
             },
             {
-                sn: 56,
+                sn: 57,
                 no: "MN0043",
                 name: "Mrs. Chiemeka Ngozi Mary",
                 work: "Redeemer's University, Ede",
@@ -716,7 +784,7 @@
                 grade: "Member"
             },
             {
-                sn: 57,
+                sn: 58,
                 no: "MN0044",
                 name: "Adieze Charity",
                 work: "Ogbonnaya Onu Polytechnic, Aba",
@@ -725,7 +793,7 @@
                 grade: "Member"
             },
             {
-                sn: 58,
+                sn: 59,
                 no: "MN0045",
                 name: "Adegboye, Tajudeen Adekunle",
                 work: "The Federal Polytechnic, Offa",
@@ -734,7 +802,7 @@
                 grade: "Member"
             },
             {
-                sn: 59,
+                sn: 60,
                 no: "MN0046",
                 name: "Dr. Alalibo, Obelem Otonye",
                 work: "Rivers State University of Science and Technology",
@@ -743,7 +811,7 @@
                 grade: "Member"
             },
             {
-                sn: 60,
+                sn: 61,
                 no: "MN0047",
                 name: "Okuma-Okpe, Tessy Kesiena",
                 work: "Federal Polytechnic, Orogun",
@@ -752,7 +820,7 @@
                 grade: "Member"
             },
             {
-                sn: 61,
+                sn: 62,
                 no: "MN0048",
                 name: "Sogaolu, Abosede Adebukola",
                 work: "Redeemer's University, Ede",
@@ -761,7 +829,7 @@
                 grade: "Member"
             },
             {
-                sn: 62,
+                sn: 63,
                 no: "MN0049",
                 name: "Omoniyi, Osefat Omolola",
                 work: "Federal Polytechnic, Ede",
