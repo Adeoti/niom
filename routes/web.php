@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PaymentHistoryController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -115,6 +116,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/news', [\App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+
+Route::get('/journals', [JournalController::class, 'index'])->name('journals.index');
+Route::get('/journals/{journal}/download', [JournalController::class, 'download'])->name('journals.download');
 
 // Single news
 
