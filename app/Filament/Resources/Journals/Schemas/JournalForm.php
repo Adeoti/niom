@@ -79,11 +79,11 @@ class JournalForm
                             ->acceptedFileTypes(['application/pdf'])
                             ->disk('public')
                             ->directory('journals/pdfs')
-                            ->maxSize(51200)
+                            ->maxSize(307200)
                             ->downloadable()
                             ->openable()
                             ->required()
-                            ->helperText('PDF only. Maximum 50MB.')
+                            ->helperText('PDF only. Maximum 300MB.')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
