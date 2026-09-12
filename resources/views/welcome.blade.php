@@ -587,35 +587,79 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card animate-on-scroll">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">JD</div>
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">OA</div>
                         <div>
-                            <h4 class="font-semibold">John Doe</h4>
-                            <p class="text-primary-500">University Lecturer</p>
+                            <h4 class="font-semibold">Osholonge Agboola Rasheed</h4>
+                            <p class="text-primary-500">Zonal Chairman, Southwest Zone</p>
                         </div>
                     </div>
-                    <p class="text-dark-600">"NIOTIM has provided me with incredible networking opportunities and access to cutting-edge research in our field."</p>
+                    <p class="text-dark-600">"Joining NIOTIM has provided me with invaluable resources, networking opportunities, and a strong professional platform. The collaborative environment and insights shared within the institute drive my personal and career development. I am proud to be part of this professional body that consistently sets high standards of excellence."</p>
                 </div>
-                
+
                 <div class="testimonial-card animate-on-scroll">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">AS</div>
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">EO</div>
                         <div>
-                            <h4 class="font-semibold">Alice Smith</h4>
-                            <p class="text-primary-500">Professional Member</p>
+                            <h4 class="font-semibold">Enyekit Ebenezer Owaji, PhD</h4>
+                            <p class="text-primary-500">Port-Harcourt, Rivers State</p>
                         </div>
                     </div>
-                    <p class="text-dark-600">"The conferences and workshops organized by NIOTIM have significantly contributed to my professional development."</p>
+                    <p class="text-dark-600">"NIOTIM is a professional body established to unite lecturers, practitioners and professionals in Office Technology and Management or Office and Information Management. The Institute promotes knowledge sharing, professional development, innovation, efficiency, and excellence in office administration and management in response to the demands of the digital age and the future office."</p>
                 </div>
-                
+
                 <div class="testimonial-card animate-on-scroll">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">RJ</div>
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">OT</div>
                         <div>
-                            <h4 class="font-semibold">Robert Johnson</h4>
-                            <p class="text-primary-500">HND Student</p>
+                            <h4 class="font-semibold">Olayanju Tobi Emmanuel</h4>
+                            <p class="text-primary-500">Financial Secretary, Southwest Zone</p>
                         </div>
                     </div>
-                    <p class="text-dark-600">"As a student member, I've gained invaluable insights and mentorship opportunities that have shaped my career path."</p>
+                    <p class="text-dark-600">"I joined the Institute to enjoy professional connection, networking and collaboration. I thank God those three core values, plus other benefits such as exposure and experience via mingling with other professionals, are really shaping me by the day. Kudos to NIOTIM. Long live Nigerian Institute of Office Technology and Information Management."</p>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">CP</div>
+                        <div>
+                            <h4 class="font-semibold">Peter Chinyere Peace</h4>
+                            <p class="text-primary-500">Ogbonnaya Onu Polytechnic, Aba, Abia State</p>
+                        </div>
+                    </div>
+                    <p class="text-dark-600">"NIOTIM is an Institute where careers are sharpened with confidence, competence and a professional network that truly supports growth, where professionalism meets purpose, and where competence meets opportunity. An Institute that builds world-class Office Professionals, provides professional recognition, and career growth. Proudly a member!"</p>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">EO</div>
+                        <div>
+                            <h4 class="font-semibold">Dr. Ezinne Okey-Colbert</h4>
+                            <p class="text-primary-500">Abia State</p>
+                        </div>
+                    </div>
+                    <p class="text-dark-600">"NIOTIM remains steadfast in its commitment to advancing professional excellence through innovation, continuous learning, and the integration of cutting-edge technology in office administration and information management. As an apex body for office management lecturers and professionals, NIOTIM empowers members to drive organizational efficiency and contribute meaningfully to Nigeria's development in an increasingly digital world. Being a member is a blessing."</p>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">FN</div>
+                        <div>
+                            <h4 class="font-semibold">Dr. Florence O. Nnaji</h4>
+                            <p class="text-primary-500">HOD, Office Technology & Management, Federal Polytechnic, Bali</p>
+                        </div>
+                    </div>
+                    <p class="text-dark-600">"Nigerian Institute of Office Technology and Information Management is a professional body committed to equipping students, lecturers, and professionals with the knowledge, skills, and confidence needed to succeed in today's digital and office environments. NIOTIM is shaping competent professionals for the future office, empowering the next generation with cutting-edge skills for a digital world."</p>
+                </div>
+
+                <div class="testimonial-card animate-on-scroll md:col-start-1 lg:col-start-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-bold mr-4">AO</div>
+                        <div>
+                            <h4 class="font-semibold">Adegboye A. Olalekan</h4>
+                            <p class="text-primary-500">Portal Manager, Osun State Polytechnic, Iree</p>
+                        </div>
+                    </div>
+                    <p class="text-dark-600">"NIOTIM continues to stand as a rallying point for professionalism, competence, and innovation among office technology and information management practitioners in Nigeria. Membership has sharpened my perspective on records governance, information accessibility, and administrative best practices — insights I carry directly into my teaching, research, and mentorship of younger colleagues. It is more than a membership, it is an investment in your career, your students, and the future of office administration in Nigeria."</p>
                 </div>
             </div>
         </div>
