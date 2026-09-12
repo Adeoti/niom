@@ -422,7 +422,7 @@
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="NIOTIM Team Photo" class="rounded-lg shadow-xl w-full">
                         <div class="absolute -bottom-6 -left-6 bg-primary-500 text-white p-6 rounded-lg shadow-lg">
-                            <div class="text-3xl font-bold">25+</div>
+                            <div class="text-3xl font-bold">3+</div>
                             <div class="text-lg">Years of Experience</div>
                         </div>
                     </div>
@@ -1157,7 +1157,7 @@
                 if (entry.isIntersecting) {
                     animateCounter('member-count', 1250, 2000);
                     animateCounter('event-count', 85, 2000);
-                    animateCounter('years-count', 25, 2000);
+                    animateCounter('years-count', 3, 2000);
                     counterObserver.unobserve(entry.target);
                 }
             });
