@@ -1199,8 +1199,8 @@
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounter('member-count', 1250, 2000);
-                    animateCounter('event-count', 85, 2000);
+                    animateCounter('member-count', 250, 2000);
+                    animateCounter('event-count', 5, 2000);
                     animateCounter('years-count', 3, 2000);
                     counterObserver.unobserve(entry.target);
                 }
